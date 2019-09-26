@@ -44,7 +44,7 @@ $ jest --config jest.config.js
       "lcov",
       "text"
     ]
-    
+
   }
 ...`
 
@@ -195,4 +195,4 @@ Example:
   }
 
 }
-...` 
+...`
