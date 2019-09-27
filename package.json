@@ -6,7 +6,9 @@
   "author": "Dayves Oliveira <dayvesoliveira@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --hot --open"
+    "dev": "webpack-dev-server --hot --open",
+    "build": "webpack production",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
