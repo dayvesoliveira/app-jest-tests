@@ -172,6 +172,7 @@ Example:
 
 - visualização do padrão regex:
 
+`
 ├── __tests__
 │   └── component.spec.js # test
 │   └── anything  # test
@@ -179,6 +180,7 @@ Example:
 ├── foo.test.js   # test
 ├── bar.spec.jsx  # test
 └── component.js  # not test
+`
 
 ## moduleNameMapper
 
