@@ -1,18 +1,13 @@
 import React from 'react'
+import ReactDOM from "react-dom"
+import Index from '../'
 
-// const fn = jest.fn()
+jest.mock("react-dom", () => ({ render: jest.fn() }));
 
-describe('index', () => {
-    
-    it('#render testando se está com a configuracao correta', ()=>{
-        expect('a').toBe('a')
+describe("Application root", () => {
+
+    it('renders without crashing', () => {
+        expect(JSON.stringify(Index)).toMatchSnapshot();
     })
-
-    test('dois mais dois é quatro', () => {
-        expect(2 + 2).toBe(4);
-
-       // expect(fn)
-    })
-
 
 })

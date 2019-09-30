@@ -121,7 +121,7 @@ O Jest falhará se:
 
 ## snapshotSerializers
 
-- Uma lista de caminhos para os módulos serializadores de captura instantânea que o Jest deve usar 
+- Definir uma lista de caminhos para os módulos serializadores de captura instantânea, que o Jest deve usar 
   para teste de snapshot testing.
 
 `...
