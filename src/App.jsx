@@ -5,8 +5,10 @@ export default class App extends React.Component {
         return (
             <div>
                 <h1>Hello, world!</h1>
-                <label htmlFor="a">TesteLabel</label>
-                <input id="a"/>
+                <label>
+                    Username
+                    <input placeholder="Digite" />
+                </label>
             </div>
         )
     }
