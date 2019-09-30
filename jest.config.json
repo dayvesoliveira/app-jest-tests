@@ -12,6 +12,12 @@
       "<rootDir>/dist/",
       "<rootDir>/node_modules/"
     ],
-    "coverageReporters": ["json", "lcov", "text"]
-
+    "coverageReporters": [
+      "json", 
+      "lcov", 
+      "text"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>src/setupTests.js"
+    ]
 }
