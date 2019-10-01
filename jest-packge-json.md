@@ -206,8 +206,8 @@ Example:
 #### Para utilizá-lo devemos executar algumas configurações básicas no projeto.
 
 
-- yarn add --dev enzima enzima-adaptador-reat-16
-- enzima-adaptador-reaja-16
+- yarn add --dev enzima enzima-adaptador-react-16
+- enzima-adaptador-react-16
 
 - definir um Adapter e suas dependências: ex. reacte react-dom.
 
