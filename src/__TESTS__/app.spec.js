@@ -17,7 +17,7 @@ describe('<App>', () => {
     
         })
         
-        it('testando se está com a configuracao do jest', ()=>{
+        it('#render testando se está com a configuracao do jest', ()=>{
             expect(wrapper.find('h1').length).toBe(1)
         })
     })
