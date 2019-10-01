@@ -23,7 +23,7 @@ describe('<App>', () => {
     })
 
 
-    describe('utilizando o @testing-library/react para fazer os testes dos components react',()=>{
+    describe('utilizando o @testing-library/react para fazer os testes dos components "React"',()=>{
 
         const title     = '<h1>Hello, world!</h1>'
         const titleText = 'Hello, world!'
