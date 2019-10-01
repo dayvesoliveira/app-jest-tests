@@ -5,7 +5,7 @@ jest.config.json.
 
 $ jest --config jest.config.js
 
-## Options
+### Options
 
 
 
@@ -48,7 +48,7 @@ $ jest --config jest.config.js
   }
 ```
 
-### coverageThreshold
+#### coverageThreshold
 
  - usado para configurar a imposição de limite mínimo para os resultados da cobertura. 
 
@@ -106,7 +106,7 @@ $ jest --config jest.config.js
 
 
 
-### coverageReporters
+#### coverageReporters
 
  - Uma lista de nomes de relatórios que Jest usa ao escrever coverage reports.
  Default: ["json", "lcov", "text"]
@@ -119,7 +119,7 @@ $ jest --config jest.config.js
 
 
 
-### snapshotSerializers
+#### snapshotSerializers
 
 - Definir uma lista de caminhos para os módulos serializadores de captura instantânea, que o Jest deve usar 
   para teste de snapshot testing.
@@ -139,7 +139,7 @@ module.exports = {
 
 ```
 
-### coveragePathIgnorePatterns
+#### coveragePathIgnorePatterns
 
 - informações de cobertura serão ignoradas de acordo com a lista informada.
 
@@ -153,12 +153,12 @@ Example:
 
 ```
 
-### setupFiles
+#### setupFiles
 
 - Uma lista de caminhos para os módulos que executam algum código para configurar ou instalar o ambiente de teste.
   Também é importante notar que o setupFiles será executado antes do setupFilesAfterEnv.
 
-#### testRegex
+##### testRegex
 
 - O padrão ou padrões que Jest usa para detectar arquivos de teste. Por padrão, ele procura arquivos .js, .jsx, .ts e .tsx  dentro das pastas __tests__, bem como arquivos com sufixo .test ou .spec (por exemplo, component.test.js ou component.spec.js). Ele também encontrará arquivos chamados test.js ou spec.js.
 
@@ -182,7 +182,7 @@ Example:
 └── component.js  # not test  
 ```
 
-### moduleNameMapper
+#### moduleNameMapper
 
 - Define um mapa de expressões regulares para nomes de módulos que permitem esboçar recursos, como imagens ou estilos com um único módulo.
 - Módulos que são mapeados para um alias são "não simuláveis por padrão", independentemente se auto simulação (automocking, em inglês) está habilitado ou não.
