@@ -9,7 +9,7 @@ $ jest --config jest.config.js
 
 
 
-`...
+```
 "jest": {
 
     "coverageThreshold": {
@@ -46,7 +46,7 @@ $ jest --config jest.config.js
     ]
 
   }
-...`
+```
 
 ## coverageThreshold
 
@@ -54,7 +54,7 @@ $ jest --config jest.config.js
 
  Por exemplo, com a seguinte configuração, o jest falhará se houver menos de 80% de cobertura de branch, line e function coverage, ou se houver mais de 10 instruções não descobertas:
 
-`...
+```
 
  "jest": {
 
@@ -69,11 +69,11 @@ $ jest --config jest.config.js
 
   }
 
-...`
+```
 
 ### Para coverage Global e por path:
 
-`...
+```
 "coverageThreshold": {
       "global": {
         "branches": 50,
@@ -95,7 +95,7 @@ $ jest --config jest.config.js
         "statements": 100
       }
 }
-...`
+```
 
 O Jest falhará se:
 
@@ -111,11 +111,11 @@ O Jest falhará se:
  - Uma lista de nomes de relatórios que Jest usa ao escrever coverage reports.
  Default: ["json", "lcov", "text"]
 
- `...
+```
 
 "coverageReporters": ["json", "lcov", "text"],
 
- ...`
+```
 
 
 
@@ -124,7 +124,7 @@ O Jest falhará se:
 - Definir uma lista de caminhos para os módulos serializadores de captura instantânea, que o Jest deve usar 
   para teste de snapshot testing.
 
-`...
+```
 
 // meu-modulo-serializador
 module.exports = {
@@ -137,21 +137,21 @@ module.exports = {
   },
 };
 
-...`
+```
 
 ## coveragePathIgnorePatterns
 
 - informações de cobertura serão ignoradas de acordo com a lista informada.
 
 Example: 
-`...
+```
     
     "coveragePathIgnorePatterns": [
         "<rootDir>/build/",
         "<rootDir>/node_modules/"
     ],
 
-...`
+```
 
 ## setupFiles
 
@@ -164,37 +164,37 @@ Example:
 
  - Veja também testMatch [array], mas observe que você não pode especificar as duas opções.
 
-`...
+```
 
     "testRegex": (/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$,
 
-...`
+```
 
 - visualização do padrão regex:
 
-`
+```
 ├── __tests__
-│   └── component.spec.js # test
-│   └── anything  # test
-├── package.json  # not test
-├── foo.test.js   # test
-├── bar.spec.jsx  # test
-└── component.js  # not test
-`
+│   └── component.spec.js # test  
+│   └── anything  # test  
+├── package.json  # not test  
+├── foo.test.js   # test  
+├── bar.spec.jsx  # test  
+└── component.js  # not test  
+```
 
 ## moduleNameMapper
 
 - Define um mapa de expressões regulares para nomes de módulos que permitem esboçar recursos, como imagens ou estilos com um único módulo.
 - Módulos que são mapeados para um alias são "não simuláveis por padrão", independentemente se auto simulação (automocking, em inglês) está habilitado ou não.
 
-`...
-{
+```
+{  
   
-  "moduleNameMapper": {
-    "^image![a-zA-Z0-9$_-]+$":   "GlobalImageStub",
-    "^[./a-zA-Z0-9$_-]+\\.png$": "<rootDir>/RelativeImageStub.js",
-    "module_name_(.*)":          "<rootDir>/substituted_module_$1.js"
-  }
+  "moduleNameMapper": {  
+    "^image![a-zA-Z0-9$_-]+$":   "GlobalImageStub",  
+    "^[./a-zA-Z0-9$_-]+\\.png$": "<rootDir>/RelativeImageStub.js",  
+    "module_name_(.*)":          "<rootDir>/substituted_module_$1.js"  
+  }  
 
 }
-...`
+```
