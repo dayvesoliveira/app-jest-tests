@@ -4,7 +4,7 @@ export default class App extends React.Component {
     render(){
         return (
             <div>
-                <h1>Hello, world!</h1>
+                <h1>UI<b>Faces</b></h1>
                 <label>
                     Username
                     <input placeholder="Digite" />

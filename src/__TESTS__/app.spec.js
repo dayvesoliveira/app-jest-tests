@@ -25,8 +25,8 @@ describe('<App>', () => {
 
     describe('utilizando o @testing-library/react para fazer os testes dos components "React"',()=>{
 
-        const title     = '<h1>Hello, world!</h1>'
-        const titleText = 'Hello, world!'
+        const title     = '<h1>UI<b>Faces</b></h1>'
+        const titleText = 'Faces'
         
         it('#getByLabelText: valida renderização do <input />', ()=>{
             const {getByLabelText} = render(<App />)
