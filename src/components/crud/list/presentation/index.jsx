@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import './styles.scss'
+
 const GridPost = ({
     listPosts,
-    editPost,
-    excludePost,
+    excludePost
 }) => (
         <table>
             <thead>
@@ -25,7 +26,16 @@ const GridPost = ({
                         <td>{ post.body }</td>
                         <td>{ post.user }</td>
                         <td>
-                            botoes
+                            <button 
+                                className="btn-edit" 
+                                href={'../'+ post.id }>
+                                Editar
+                            </button>
+                            <button 
+                                className="btn-exclude" 
+                                onClick={excludePost(post.id)}>
+                                Excluir
+                            </button>
                         </td>
                     </tr>)
                 })
@@ -36,14 +46,12 @@ const GridPost = ({
 
 GridPost.defaultProps = {
     listPosts:   [],
-    editPost:    ()=>{},
     excludePost: ()=>{}
 }
 
 GridPost.propTypes = {
     listPosts:   PropTypes.array,
-    editPost:    PropTypes.func,
-    excludePost: PropTypes.func,
+    excludePost: PropTypes.func.isRequired,
 }
 
 export default GridPost
