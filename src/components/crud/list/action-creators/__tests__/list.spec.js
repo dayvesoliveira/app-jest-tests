@@ -35,7 +35,10 @@ describe('#actions creator',()=>{
             await fetchSearchPosts()(dispatch)
 
             expect(dispatch).toHaveBeenCalledWith(
-                true
+                
+                //    {"type": "FETCH_SEARCH_DATA"},
+                    {"type": "FETCH_SEARCH_FAILURE"}
+                
             )
         })
     })
