@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 
 import GridPost from '..'
-import { MOCK_POSTS } from './mock'
+import { MOCK_POSTS } from '../../../../../config/tests/__mocks__/posts.mock'
 
 const listPostsMock = MOCK_POSTS
 

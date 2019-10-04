@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#Posts reducers posts should return the \`FETCH_SEARCH_DATA\` state 1`] = `
+Object {
+  "isLoading": true,
+}
+`;
+
+exports[`#Posts reducers posts should return the \`FETCH_SEARCH_FAILURE\` state 1`] = `
+Object {
+  "error": undefined,
+  "isLoading": false,
+}
+`;
+
+exports[`#Posts reducers posts should return the \`RESET_SEARCH_DATA\` state 1`] = `
+Object {
+  "error": Object {},
+  "isLoading": false,
+  "payload": Array [],
+}
+`;
+
+exports[`#Posts reducers posts should return the initial state by default 1`] = `Array []`;

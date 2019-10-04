@@ -3,7 +3,6 @@ import Auth from './auth'
 
 export const envirioments = {
     END_POINT: "https://reqres.in/",
-
 }
 
 const api = axios.create({
@@ -15,7 +14,7 @@ api.interceptors.request.use(async config => {
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
-    return config;
+    return config
 })
 
 export default api

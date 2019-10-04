@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from "react-dom"
-import Index from '../'
+import Index from '..'
 
 jest.mock("react-dom", () => ({ render: jest.fn() }));
 

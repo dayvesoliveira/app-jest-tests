@@ -1,36 +1,45 @@
-import { combineReducers } from "redux"
-import { PostsTypeActions as caPosts } from "../create-actions"
+import { 
+    
+    FETCH_SEARCH_DATA,
+    FETCH_SEARCH_SUCCESS,
+    FETCH_SEARCH_FAILURE,
+    RESET_SEARCH_DATA
 
-const initialState = {
-    list: [],
-    isFetching: false,
-    complete: true,
-    status: 0
+} from "../action-creators"
+
+export const initialState = {
+    payload: [],
+    isLoading: false,
+    error: {}
 }
 
-// definir aqui os reducers
-
-const posts = ( state = initialState, {type, payload} ) => {
-    switch (type){
-        case caPosts.POSTS_SET_ALL:
-            return payload
-
-        case caPosts.POSTS_GET_ALL:
+const searchReducer = ( state=initialState, action ) => { 
+    switch(action.type) {
+        case FETCH_SEARCH_DATA:      
             return {
                 ...state,
-                list: [],
-                isFetching: true,
-                complete: false,
-                status: 0
+                isLoading: true
             }
-        case caPosts.POSTS_GET_ALL_SUCCESS:
-        return {
-
-        }
-        case caPosts.POSTS_GET_ALL_ERROR:
+        case FETCH_SEARCH_SUCCESS:
+            return {        
+	            ...state,
+                payload:   action.payload,
+                isLoading: false
+            }
+        case FETCH_SEARCH_FAILURE:      
+            return {        
+	            ...state,        
+                error:     action.error,        
+                isLoading: false
+            }
+        case RESET_SEARCH_DATA:      
+            return {
+                ...state,
+                ...initialState 
+            }        
+		default:
+            return state
     }
 }
 
-const reducer = combineReducers({  })
-
-export default reducer
+export default searchReducer
