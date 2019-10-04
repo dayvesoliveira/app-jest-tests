@@ -29,8 +29,8 @@ describe('#actions creator',()=>{
         
     // })
 
-    describe('fetchSearchPosts',()=>{
-        it('should request fetch search posts', ()=>{
+    describe('fetchSearchPosts',() => {
+        it('should request fetch search posts',async ()=>{
 
             await fetchSearchPosts()(dispatch)
 
