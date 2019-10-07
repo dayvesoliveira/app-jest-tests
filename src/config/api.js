@@ -1,20 +1,22 @@
-import axios from 'axios'
+import { create } from 'axios'
 import Auth from './auth'
+import environments from './environments'
 
-export const envirioments = {
-    END_POINT: "https://reqres.in/",
+const api = () => {
+
+    const _api = create({
+        baseURL: environments.baseURL
+    })
+    
+    _api.interceptors.request.use(async config => {
+        const token = Auth.getToken();
+        if (token) {
+          config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config
+    })
+
+    return _api
 }
 
-const api = axios.create({
-    baseURL: envirioments.END_POINT
-})
-
-api.interceptors.request.use(async config => {
-    const token = Auth.getToken();
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config
-})
-
-export default api
+export default api()

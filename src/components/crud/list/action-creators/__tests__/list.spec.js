@@ -6,28 +6,43 @@ import {
     errorResponsePosts
 } from '../index'
 
-import { MOCK_POSTS } from '../../../../../config/tests/__mocks__/posts.mock';
+import { MOCK_POSTS } from '../../../../../config/tests/__mocks__/posts.mock'
+import api from '../../../../../config/api'
 
 const listPostsMock = MOCK_POSTS
 const POST_MOCK = listPostsMock[0]
 
-const dispatch = jest.fn();
+const dispatch = jest.fn()
+
+afterEach(() => {
+	dispatch.mockClear()
+	dispatch.mockReset()
+})
 
 describe('#actions creator',()=>{
 
-    // describe('loadSearchPosts',()=>{
-    //     it('should return the initial state by default', ()=>{
-    //         expect(posts([],{})).toMatchSnapshot()
-    //     })
-    // })
+    describe('loadSearchPosts',() => {
+        it('should start loading posts',()=>{
+            expect(loadSearchPosts()).toEqual({"type": "FETCH_SEARCH_DATA"})
+        })
+    })
 
-    // describe('setPosts',()=>{
-        
-    // })
+    describe('errorResponsePosts',() => {
+        it('should response error posts',()=>{
+            expect(errorResponsePosts()).toEqual({"type": "FETCH_SEARCH_FAILURE"})
+        })
+    })
 
-    // describe('errorResponsePosts',()=>{
-        
-    // })
+    describe('setPosts',() => {
+        it('should response error posts',()=>{
+            const mockAction = {
+                "type": "FETCH_SEARCH_SUCCESS",
+                payload: POST_MOCK
+            }
+
+            expect(setPosts(POST_MOCK)).toEqual(mockAction)
+        })
+    })
 
     describe('fetchSearchPosts',() => {
         it('should request fetch search posts',async ()=>{
@@ -35,11 +50,26 @@ describe('#actions creator',()=>{
             await fetchSearchPosts()(dispatch)
 
             expect(dispatch).toHaveBeenCalledWith(
-                
-                //    {"type": "FETCH_SEARCH_DATA"},
-                    {"type": "FETCH_SEARCH_FAILURE"}
-                
+                {"type": "FETCH_SEARCH_DATA"}
+            )
+        })
+
+        it('should request fetch search posts',async ()=>{
+
+            spyOn(api, 'get').and.returnValue(Promise.reject('Error Mocking'));
+
+            await fetchSearchPosts()(dispatch)
+
+            expect(dispatch).toHaveBeenCalledWith(
+                {"type": "FETCH_SEARCH_FAILURE"}
             )
         })
     })
+
+    describe('resetPosts',() => {
+        it('should reset posts',()=>{
+            expect(resetPosts()).toEqual({"type": "RESET_SEARCH_DATA"})
+        })
+    })
+
 })

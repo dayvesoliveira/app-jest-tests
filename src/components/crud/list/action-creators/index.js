@@ -9,7 +9,7 @@ export const RESET_SEARCH_DATA     = "RESET_SEARCH_DATA"
 
 const END_POINT = '/posts'
 
-const loadSearchPosts = () => ({
+export const loadSearchPosts = () => ({
    type: FETCH_SEARCH_DATA
 })
 
@@ -19,7 +19,7 @@ export const setPosts = payload => ({
 })
 
 export const errorResponsePosts = () => ({
-   type: FETCH_SEARCH_FAILURE
+   type: FETCH_SEARCH_FAILURE,
 })
 
 export const fetchSearchPosts = () => async dispatch =>{
@@ -27,14 +27,9 @@ export const fetchSearchPosts = () => async dispatch =>{
     try {
         const response = await api.get(END_POINT)
         dispatch(setPosts( response ))
-
-        // dispatch(
-        //    setPosts(await api.get(END_POINT))
-        // )
-
     } catch(e){
-        console.log('Error: '+ e)
-        dispatch(errorResponsePosts(e))
+        // console.log('Error: '+ e)
+        dispatch(errorResponsePosts())
     }
 }
 
