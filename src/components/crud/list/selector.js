@@ -1,0 +1,1 @@
+export const selectCrud = state => state.searchReducer

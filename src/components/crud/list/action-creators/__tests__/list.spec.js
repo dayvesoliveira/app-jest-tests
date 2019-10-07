@@ -1,7 +1,7 @@
 import {
     loadSearchPosts,
     fetchSearchPosts,
-    setPosts,
+    setSearchPosts,
     resetPosts,
     errorResponsePosts
 } from '../index'
@@ -33,14 +33,14 @@ describe('#actions creator',()=>{
         })
     })
 
-    describe('setPosts',() => {
+    describe('setSearchPosts',() => {
         it('should response error posts',()=>{
             const mockAction = {
                 "type": "FETCH_SEARCH_SUCCESS",
                 payload: POST_MOCK
             }
 
-            expect(setPosts(POST_MOCK)).toEqual(mockAction)
+            expect(setSearchPosts(POST_MOCK)).toEqual(mockAction)
         })
     })
 

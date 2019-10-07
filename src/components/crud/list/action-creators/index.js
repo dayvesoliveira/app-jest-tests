@@ -13,7 +13,7 @@ export const loadSearchPosts = () => ({
    type: FETCH_SEARCH_DATA
 })
 
-export const setPosts = payload => ({
+export const setSearchPosts = payload => ({
    type: FETCH_SEARCH_SUCCESS,
    payload
 })
@@ -26,7 +26,7 @@ export const fetchSearchPosts = () => async dispatch =>{
     dispatch(loadSearchPosts())
     try {
         const response = await api.get(END_POINT)
-        dispatch(setPosts( response ))
+        dispatch(setSearchPosts( response ))
     } catch(e){
         // console.log('Error: '+ e)
         dispatch(errorResponsePosts())
