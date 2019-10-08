@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
-import searchReducer from '../components/crud/list/reducer'
+import {reducer as crudReducer} from '../components/crud/list'
 
 const rootReducer = combineReducers({
-    searchReducer
+    crudReducer
 })
 
 export default rootReducer
