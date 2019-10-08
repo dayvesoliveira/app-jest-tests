@@ -1,19 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`#Posts reducers posts should return the \`FETCH_SEARCH_DATA\` state 1`] = `
-Object {
-  "isLoading": true,
-}
-`;
+exports[`#Posts reducers delete should return the \`DELETE_REGISTER_DATA\` state 1`] = `Object {}`;
 
-exports[`#Posts reducers posts should return the \`FETCH_SEARCH_FAILURE\` state 1`] = `
+exports[`#Posts reducers delete should return the \`DELETE_REGISTER_FAILURE\` state 1`] = `
 Object {
   "error": undefined,
   "isLoading": false,
 }
 `;
 
-exports[`#Posts reducers posts should return the \`RESET_SEARCH_DATA\` state 1`] = `
+exports[`#Posts reducers search should return the \`FETCH_SEARCH_DATA\` state 1`] = `
+Object {
+  "isLoading": true,
+}
+`;
+
+exports[`#Posts reducers search should return the \`FETCH_SEARCH_FAILURE\` state 1`] = `
+Object {
+  "error": undefined,
+  "isLoading": false,
+}
+`;
+
+exports[`#Posts reducers search should return the \`RESET_SEARCH_DATA\` state 1`] = `
 Object {
   "error": Object {},
   "isLoading": false,
@@ -21,4 +30,4 @@ Object {
 }
 `;
 
-exports[`#Posts reducers posts should return the initial state by default 1`] = `Array []`;
+exports[`#Posts reducers search should return the initial state by default 1`] = `Array []`;

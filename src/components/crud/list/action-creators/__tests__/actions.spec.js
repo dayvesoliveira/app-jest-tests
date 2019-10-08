@@ -3,7 +3,9 @@ import {
     fetchSearchPosts,
     setSearchPosts,
     resetPosts,
-    errorResponsePosts
+    errorResponsePosts,
+    deletePost,
+    errorDeletePost
 } from '../index'
 
 import { MOCK_POSTS } from '../../../../../config/tests/__mocks__/posts.mock'
@@ -69,6 +71,38 @@ describe('#actions creator',()=>{
     describe('resetPosts',() => {
         it('should reset posts',()=>{
             expect(resetPosts()).toEqual({"type": "RESET_SEARCH_DATA"})
+        })
+    })
+
+    describe('errorDeletePost',() => {
+        it('should response error delete posts',()=>{
+            expect(errorDeletePost()).toEqual({"type": "DELETE_REGISTER_FAILURE"})
+        })
+    })
+
+    describe('deletePost',() => {
+        
+        const ID_MOCK = '1111'
+
+        it('should request delete post',async ()=>{
+            
+
+            await deletePost(ID_MOCK)(dispatch)
+
+            expect(dispatch).toHaveBeenCalledWith(
+                {"type": "FETCH_SEARCH_DATA"}
+            )
+        })
+
+        it('should request delete search posts',async ()=>{
+
+            spyOn(api, 'delete').and.returnValue(Promise.reject('Error Mocking'));
+
+            await deletePost(ID_MOCK)(dispatch)
+
+            expect(dispatch).toHaveBeenCalledWith(
+                {"type": "DELETE_REGISTER_FAILURE"}
+            )
         })
     })
 

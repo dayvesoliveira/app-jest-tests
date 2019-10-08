@@ -1,22 +1,23 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
+import { shallow, mount, render } from 'enzyme'
 
 import { Provider as RdxProvider } from 'react-redux'
 
 import Crud, { CrudPureContainer } from '../index'
 import { MOCK_POSTS } from '../../../../../config/tests/__mocks__/posts.mock'
 
+const MOCK_ITEM = MOCK_POSTS[0]
+
 const Provider = ({
     children, 
     store
 }) => <RdxProvider store={ store }>{ children }</RdxProvider>
 
-
 const props = {
     fetchSearchPosts: jest.fn(),
     resetPosts: jest.fn(),
     searchPosts: [],
-    handleDelete: jest.fn()
+    deletePost: jest.fn()
 }
 
 describe('<RdxProviderCrud />', ()=>{
@@ -55,7 +56,7 @@ describe('<RdxProviderCrud />', ()=>{
 
     const newProps = {
         ...props,
-        searchPosts: MOCK_POSTS
+        searchPosts: [ MOCK_ITEM ],
     }
 
     describe('#render', ()=>{
@@ -69,13 +70,25 @@ describe('<RdxProviderCrud />', ()=>{
     describe('#handleDelete',()=>{
 
         it('should call handleDelete', ()=>{
-            const ID_MOCK = 1111
-            const handleDeleteSpy = jest.spyOn(instance, 'handleDelete')
-            instance.handleDelete(ID_MOCK)
-            expect(handleDeleteSpy).toHaveBeenCalled()
+
+            const component = mount(<CrudPureContainer {...newProps}  />)
             
-            // expect(props.deletePost).toHaveBeenCalledWith(1)
+            expect(component.find('.btn-exclude').length).toBe(1)
+
+            component.find('.btn-exclude').simulate('click')
+            
+            expect(component.find('.btn-exclude')).toMatchSnapshot()
         })
 
+        it('should call handleDelete and return message error',()=>{
+            const newMockItem = MOCK_ITEM.id = ''
+            const searchPosts = [ newMockItem ]
+
+            const component = mount(<CrudPureContainer {...newProps} searchPosts={searchPosts} />)
+            
+            expect(component.find('.btn-exclude').length).toBe(1)
+
+            component.find('.btn-exclude').simulate('click')
+        })
     })
 })

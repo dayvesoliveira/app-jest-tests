@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 
 import GridPost from '..'
+
 import { MOCK_POSTS } from '../../../../../config/tests/__mocks__/posts.mock'
 
 const listPostsMock = MOCK_POSTS
@@ -9,8 +10,8 @@ const listPostsMock = MOCK_POSTS
 describe('<GridPost />', () => {
 
     const defaultProps = {
-        listPosts: listPostsMock,
-        excludePost: jest.fn()
+        searchPosts: listPostsMock,
+        handleDelete: jest.fn()
     }
 
     const props = {
@@ -40,7 +41,8 @@ describe('<GridPost />', () => {
     describe('#event', ()=>{
         
         const propsEvents = {
-            listPosts: [ listPostsMock[0] ]
+            searchPosts: [ listPostsMock[0] ],
+            handleDelete: jest.fn()
         }
 
         it('valida se o evento foi disparado ao clicar em btn-edit', () => {
@@ -55,7 +57,7 @@ describe('<GridPost />', () => {
 
         it('valida se o evento foi disparado ao clicar em btn-exclude', () => {
             const spy = jest.fn()
-            const component = mount(<GridPost {...propsEvents} excludePost={spy} />)
+            const component = mount(<GridPost {...propsEvents} handleDelete={spy} />)
 
             expect(component.find('.btn-exclude').length).toBe(1)
 
@@ -63,7 +65,7 @@ describe('<GridPost />', () => {
             
             expect(component.find('.btn-exclude')).toMatchSnapshot()
 
-            expect(spy).toHaveBeenCalled(); 
+            expect(spy).toHaveBeenCalled();
         })
     })
 

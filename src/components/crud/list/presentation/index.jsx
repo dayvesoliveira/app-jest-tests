@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import './styles.scss'
 
 const GridPost = ({
-    listPosts,
-    excludePost
+    searchPosts,
+    handleDelete
 }) => (
         <table>
             <thead>
@@ -18,7 +18,7 @@ const GridPost = ({
                 </tr>
             </thead>
             <tbody>
-                { listPosts && listPosts.map(post=>{
+                { searchPosts && searchPosts.map(post=>{
                     return (
                     <tr key={ 'pst_' + post.id }>
                         <td>{ post.id }</td>
@@ -28,12 +28,12 @@ const GridPost = ({
                         <td>
                             <button 
                                 className="btn-edit" 
-                                href={'../'+ post.id }>
+                                href={'/posts/'+ post.id }>
                                 Editar
                             </button>
                             <button 
                                 className="btn-exclude" 
-                                onClick={excludePost(post.id)}>
+                                onClick={()=>handleDelete(post.id)}>
                                 Excluir
                             </button>
                         </td>
@@ -44,14 +44,9 @@ const GridPost = ({
         </table>
 )
 
-GridPost.defaultProps = {
-    listPosts:   [],
-    excludePost: ()=>{}
-}
-
 GridPost.propTypes = {
-    listPosts:   PropTypes.array,
-    excludePost: PropTypes.func.isRequired,
+    searchPosts:   PropTypes.array,
+    handleDelete: PropTypes.func.isRequired,
 }
 
 export default GridPost

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RdxProviderCrud /> #handleDelete should call handleDelete 1`] = `
+<button
+  className="btn-exclude"
+  onClick={[Function]}
+>
+  Excluir
+</button>
+`;

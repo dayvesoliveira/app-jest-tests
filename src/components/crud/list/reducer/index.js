@@ -3,9 +3,12 @@ import {
     FETCH_SEARCH_DATA,
     FETCH_SEARCH_SUCCESS,
     FETCH_SEARCH_FAILURE,
-    RESET_SEARCH_DATA
+    RESET_SEARCH_DATA,
+    DELETE_REGISTER_DATA,
+    DELETE_REGISTER_FAILURE
 
 } from "../action-creators"
+import { combineReducers } from "redux"
 
 export const initialState = {
     payload: [],
@@ -13,9 +16,9 @@ export const initialState = {
     error: {}
 }
 
-const searchReducer = ( state=initialState, action ) => { 
+export const search = ( state=initialState, action ) => {
     switch(action.type) {
-        case FETCH_SEARCH_DATA:      
+        case FETCH_SEARCH_DATA:
             return {
                 ...state,
                 isLoading: true
@@ -26,7 +29,7 @@ const searchReducer = ( state=initialState, action ) => {
                 payload:   action.payload,
                 isLoading: false
             }
-        case FETCH_SEARCH_FAILURE:      
+        case FETCH_SEARCH_FAILURE:
             return {        
 	            ...state,        
                 error:     action.error,        
@@ -36,10 +39,26 @@ const searchReducer = ( state=initialState, action ) => {
             return {
                 ...state,
                 ...initialState 
-            }        
+            }
 		default:
             return state
     }
 }
 
-export default searchReducer
+export const remove = ( state=initialState, action ) => {
+    switch(action.type) {
+        case DELETE_REGISTER_FAILURE:
+            return {        
+	            ...state,        
+                error:     action.error,        
+                isLoading: false
+            }
+		default:
+            return state
+    }
+}
+
+export default combineReducers({
+	search,
+	remove
+})

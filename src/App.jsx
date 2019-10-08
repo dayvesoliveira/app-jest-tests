@@ -1,5 +1,7 @@
 import React from 'react'
 
+import {Crud} from './components/crud/list'
+
 export default class App extends React.Component {
     render(){
         return (
@@ -9,6 +11,7 @@ export default class App extends React.Component {
                     Username
                     <input placeholder="Digite" />
                 </label>
+                <Crud />
             </div>
         )
     }

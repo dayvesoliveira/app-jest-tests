@@ -3,7 +3,7 @@
 exports[`<GridPost /> #event valida se o evento foi disparado ao clicar em btn-edit 1`] = `
 <button
   className="btn-edit"
-  href="../1"
+  href="/posts/1"
 >
   Editar
 </button>
@@ -12,6 +12,7 @@ exports[`<GridPost /> #event valida se o evento foi disparado ao clicar em btn-e
 exports[`<GridPost /> #event valida se o evento foi disparado ao clicar em btn-exclude 1`] = `
 <button
   className="btn-exclude"
+  onClick={[Function]}
 >
   Excluir
 </button>

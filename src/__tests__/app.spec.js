@@ -4,6 +4,7 @@ import { shallow, mount } from 'enzyme'
 import App from '../App';
 
 import {render, fireEvent} from '@testing-library/react'
+import Crud, { CrudPureContainer } from '../components/crud/list';
 
 describe('<App>', () => {
 
@@ -19,6 +20,14 @@ describe('<App>', () => {
         
         it('#render testando se está com a configuracao do jest', ()=>{
             expect(wrapper.find('h1').length).toBe(1)
+        })
+    })
+
+    describe('#render <Crud />', ()=>{
+
+        it('should render <Crud />', ()=>{
+            const wrapper = mount(<App />);
+            expect(wrapper.find(Crud).length).toBe(1);
         })
     })
 
