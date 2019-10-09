@@ -1,10 +1,16 @@
 import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-import rootReducer from '../reducers'
+import thunkMiddleware from 'redux-thunk'
+import reducers from '../reducers'
 
-const store = createStore(
-    rootReducer,
-    applyMiddleware(thunk)
-)
+export default function configureStore(preloadedState = {}) {
+    
+    const store = createStore(
+        reducers, 
+        preloadedState, 
+        applyMiddleware(thunkMiddleware)
+    )
 
-export default store
+    return store
+}
+
+

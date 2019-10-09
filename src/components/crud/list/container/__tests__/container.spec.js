@@ -3,6 +3,11 @@ import { shallow, mount, render } from 'enzyme'
 
 import { Provider as RdxProvider } from 'react-redux'
 
+import configureStore from '../../../../../store'
+
+const store = configureStore()
+
+
 import Crud, { CrudPureContainer } from '../index'
 import { MOCK_POSTS } from '../../../../../config/tests/__mocks__/posts.mock'
 
@@ -23,7 +28,7 @@ const props = {
 describe('<RdxProviderCrud />', ()=>{
 
     let providerCrudContainer = (
-        <Provider>
+        <Provider store={store}>
             <Crud {...props} />
         </Provider>
     )
@@ -37,7 +42,7 @@ describe('<RdxProviderCrud />', ()=>{
 
 })
 
-describe('<RdxProviderCrud />', ()=>{
+describe('<CrudPureContainer />', ()=>{
 
     let componentShallowed
     let instance
