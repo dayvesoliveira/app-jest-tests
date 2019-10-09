@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: './src/index.js',
-    //entry: ["@babel/polyfill", "./src/index.js"],
+    // entry: ["@babel/polyfill", "./src/index.js"],
     output:{
         path: path.resolve(__dirname, '/dist'),
         filename: 'bundle.js'
@@ -23,12 +23,12 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.html',
-            filename: './index.html'
-        })
-    ],
+    // plugins: [
+    //     new HtmlWebpackPlugin({
+    //         template: './src/index.html',
+    //         filename: './index.html'
+    //     })
+    // ],
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: false,

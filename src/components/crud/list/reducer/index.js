@@ -11,7 +11,7 @@ import {
 import { combineReducers } from "redux"
 
 export const initialState = {
-    payload: [],
+    list: [],
     isLoading: false,
     error: {}
 }
@@ -24,9 +24,10 @@ export const search = ( state=initialState, action ) => {
                 isLoading: true
             }
         case FETCH_SEARCH_SUCCESS:
+                console.log(state, action)
             return {        
 	            ...state,
-                payload:   action.payload,
+                list:   action.payload,
                 isLoading: false
             }
         case FETCH_SEARCH_FAILURE:

@@ -45,7 +45,7 @@ const GridPost = ({
 )
 
 GridPost.propTypes = {
-    searchPosts:   PropTypes.array,
+    searchPosts:  PropTypes.array,
     handleDelete: PropTypes.func.isRequired,
 }
 

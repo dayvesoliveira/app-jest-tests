@@ -1,1 +1,1 @@
-export const selectCrud = state => state.searchReducer
+export const selectCrud = state => state.search

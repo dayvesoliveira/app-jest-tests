@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Crud from './components/crud/list'
+import { Crud } from './components/crud/list'
 
 
 export class App extends React.Component {

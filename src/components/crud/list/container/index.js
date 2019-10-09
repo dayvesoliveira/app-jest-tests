@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, cloneElement } from 'react'
 import PropTypes from 'prop-types'
 
 import { 
