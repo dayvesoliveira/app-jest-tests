@@ -11,12 +11,16 @@ import {
 import GridPost from '../presentation'
 
 import { connect } from 'react-redux'
-import { selectCrud } from '../selector'
+import { 
+    selectPosts, 
+    selectCrud
+} from '../selector'
 
 class Crud extends PureComponent {
 
     static propTypes = {
         fetchSearchPosts:   PropTypes.func.isRequired,
+        deletePost:         PropTypes.func.isRequired,
         searchPosts:        PropTypes.array
     }
 
@@ -36,7 +40,8 @@ class Crud extends PureComponent {
     }
 
     render(){
-        const { searchPosts } = this.props
+        const { search, searchPosts } = this.props
+        console.log('props', this.props)
         return (
             <GridPost 
                 searchPosts={ searchPosts }
@@ -48,7 +53,8 @@ class Crud extends PureComponent {
 }
 
 const mapStateToProps = state =>({
-    ...selectCrud(state)
+    select:      selectCrud(state),
+    searchPosts: selectPosts(state)
 })
 
 const actionCreators = {

@@ -16,24 +16,23 @@ export const initialState = {
     error: {}
 }
 
-export const search = ( state=initialState, action ) => {
-    switch(action.type) {
+export const search = ( state=initialState, { type, list, error }) => {
+    switch(type) {
         case FETCH_SEARCH_DATA:
             return {
                 ...state,
                 isLoading: true
             }
         case FETCH_SEARCH_SUCCESS:
-                console.log(state, action)
-            return {        
-	            ...state,
-                list:   action.payload,
+            return {
+                ...state,
+                list: list,
                 isLoading: false
             }
         case FETCH_SEARCH_FAILURE:
             return {        
-	            ...state,        
-                error:     action.error,        
+	            ...state,
+                ...error,        
                 isLoading: false
             }
         case RESET_SEARCH_DATA:      
@@ -46,12 +45,17 @@ export const search = ( state=initialState, action ) => {
     }
 }
 
-export const remove = ( state=initialState, action ) => {
-    switch(action.type) {
+export const remove = ( state=initialState, { type, error } ) => {
+    switch(type) {
+        case FETCH_SEARCH_SUCCESS:
+                return {
+                    ...state,
+                    isLoading: false
+                }
         case DELETE_REGISTER_FAILURE:
             return {        
 	            ...state,        
-                error:     action.error,        
+                ...error,        
                 isLoading: false
             }
 		default:

@@ -26,11 +26,11 @@ const GridPost = ({
                         <td>{ post.body }</td>
                         <td>{ post.user }</td>
                         <td>
-                            <button 
+                            <a 
                                 className="btn-edit" 
                                 href={'/posts/'+ post.id }>
                                 Editar
-                            </button>
+                            </a>
                             <button 
                                 className="btn-exclude" 
                                 onClick={()=>handleDelete(post.id)}>
