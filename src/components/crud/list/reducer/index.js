@@ -47,6 +47,11 @@ export const search = ( state=initialState, { type, list, error }) => {
 
 export const remove = ( state=initialState, { type, error } ) => {
     switch(type) {
+        case FETCH_SEARCH_DATA:
+            return {
+                ...state,
+                isLoading: true
+            }
         case FETCH_SEARCH_SUCCESS:
                 return {
                     ...state,

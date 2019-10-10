@@ -40,8 +40,7 @@ class Crud extends PureComponent {
     }
 
     render(){
-        const { search, searchPosts } = this.props
-        console.log('props', this.props)
+        const { searchPosts } = this.props
         return (
             <GridPost 
                 searchPosts={ searchPosts }
