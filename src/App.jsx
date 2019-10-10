@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Crud } from './components/crud/list'
+//import { Crud } from './components/crud/list'
+import RouteApp from './routes'
 
 
 export class App extends React.Component {
@@ -12,7 +13,7 @@ export class App extends React.Component {
                     Username: 
                     <input placeholder="somenete para testes com jest" />
                 </label>
-                <Crud />
+                <RouteApp />
             </div>
         )
     }
