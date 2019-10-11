@@ -26,3 +26,5 @@ describe('#selectors',()=>{
         })
     })
 })
+
+// ex de testes: https://medium.com/vena-engineering/testing-react-redux-apps-with-jest-and-enzyme-795232bd0fda
