@@ -1,14 +1,12 @@
-import { 
-    
+import { combineReducers } from "redux"
+import {     
     FETCH_SEARCH_DATA,
     FETCH_SEARCH_SUCCESS,
     FETCH_SEARCH_FAILURE,
     RESET_SEARCH_DATA,
-    DELETE_REGISTER_DATA,
     DELETE_REGISTER_FAILURE
-
 } from "../action-creators"
-import { combineReducers } from "redux"
+
 
 export const initialState = {
     list: [],

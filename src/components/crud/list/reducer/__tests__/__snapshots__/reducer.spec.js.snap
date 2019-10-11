@@ -4,8 +4,23 @@ exports[`#Posts reducers delete should return the \`DELETE_REGISTER_DATA\` state
 
 exports[`#Posts reducers delete should return the \`DELETE_REGISTER_FAILURE\` state 1`] = `
 Object {
-  "error": undefined,
   "isLoading": false,
+}
+`;
+
+exports[`#Posts reducers delete should return the \`FETCH_SEARCH_DATA\` state 1`] = `
+Object {
+  "error": Object {},
+  "isLoading": true,
+  "list": Array [],
+}
+`;
+
+exports[`#Posts reducers delete should return the \`FETCH_SEARCH_SUCCESS\` state 1`] = `
+Object {
+  "error": Object {},
+  "isLoading": false,
+  "list": Array [],
 }
 `;
 
@@ -17,7 +32,6 @@ Object {
 
 exports[`#Posts reducers search should return the \`FETCH_SEARCH_FAILURE\` state 1`] = `
 Object {
-  "error": undefined,
   "isLoading": false,
 }
 `;
@@ -26,7 +40,7 @@ exports[`#Posts reducers search should return the \`RESET_SEARCH_DATA\` state 1`
 Object {
   "error": Object {},
   "isLoading": false,
-  "payload": Array [],
+  "list": Array [],
 }
 `;
 

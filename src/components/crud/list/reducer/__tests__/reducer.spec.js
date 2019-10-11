@@ -29,11 +29,11 @@ describe('#Posts reducers',()=>{
 
             const actionMock = {
                 type: FETCH_SEARCH_SUCCESS,
-                payload: MOCK_POSTS
+                list: MOCK_POSTS
             }
 
             expect(search([],actionMock)).toEqual({
-                payload: MOCK_POSTS,
+                list: MOCK_POSTS,
                 isLoading: false
             })
         })
@@ -49,6 +49,14 @@ describe('#Posts reducers',()=>{
 
     describe('delete', ()=>{
         
+        it('should return the `FETCH_SEARCH_DATA` state', ()=>{
+            expect(remove(undefined,{type: FETCH_SEARCH_DATA })).toMatchSnapshot()
+        })
+
+        it('should return the `FETCH_SEARCH_SUCCESS` state', ()=>{
+            expect(remove(undefined,{type: FETCH_SEARCH_SUCCESS })).toMatchSnapshot()
+        })
+
         it('should return the `DELETE_REGISTER_DATA` state', ()=>{
             expect(remove({},{type: DELETE_REGISTER_DATA })).toMatchSnapshot()
         })

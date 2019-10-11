@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<GridPost /> #event valida se o evento foi disparado ao clicar em btn-edit 1`] = `
-<button
+<a
   className="btn-edit"
   href="/posts/1"
 >
   Editar
-</button>
+</a>
 `;
 
 exports[`<GridPost /> #event valida se o evento foi disparado ao clicar em btn-exclude 1`] = `

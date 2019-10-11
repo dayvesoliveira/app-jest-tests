@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`detail reducer #detail should return the \`INSERT_UPDATE_POST\` set input value 1`] = `
+Object {
+  "input": 222,
+}
+`;
+
+exports[`detail reducer #detail should return the \`INSERT_UPDATE_POST\` state 1`] = `undefined`;
+
+exports[`detail reducer #detail should return the initial state by default 1`] = `Object {}`;
+
+exports[`detail reducer #error should return the \`"POST_ERROR"\` set POST_ERROR--Messages input value 1`] = `"POST_ERROR--Messages"`;
+
+exports[`detail reducer #error should return the \`"POST_GET_ERROR"\` set POST_GET_ERROR--Messages input value 1`] = `"POST_GET_ERROR--Messages"`;
+
+exports[`detail reducer #error should return the initial state by default 1`] = `Object {}`;
+
+exports[`detail reducer #loading should return the initial state by default 1`] = `
+Object {
+  "error": Object {},
+  "isLoading": false,
+  "model": Object {},
+}
+`;

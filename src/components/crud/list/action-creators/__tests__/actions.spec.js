@@ -39,7 +39,7 @@ describe('#actions creator',()=>{
         it('should response error posts',()=>{
             const mockAction = {
                 "type": "FETCH_SEARCH_SUCCESS",
-                payload: POST_MOCK
+                list: POST_MOCK
             }
 
             expect(setSearchPosts(POST_MOCK)).toEqual(mockAction)
