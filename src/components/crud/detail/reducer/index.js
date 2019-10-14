@@ -8,15 +8,17 @@ import {
 } from '../action-creators'
 
 export const initialState = {
-    model: {},
-    isLoading: false,
-    error: {}
+    value1: '',
+    value2: ''
 }
 
-export const detail = ( state=initialState, { type, model, error }) => {
+export const detail = ( state=initialState, { type, model }) => {
     switch(type) {
-        case INSERT_UPDATE_POST: 
-            return model
+        case INSERT_UPDATE_POST:
+            return {
+                ...state,
+                ...model
+            }
         default: 
             return state
     }
