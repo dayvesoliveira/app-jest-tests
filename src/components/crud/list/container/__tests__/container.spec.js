@@ -1,5 +1,7 @@
 import React from 'react'
 import { shallow, mount, render } from 'enzyme'
+import { BrowserRouter, MemoryRouter } from 'react-router-dom'
+import { shape } from 'prop-types'
 
 import { Provider as RdxProvider } from 'react-redux'
 
@@ -42,13 +44,31 @@ describe('<RdxProviderCrud />', ()=>{
 
 })
 
+// const router = {
+//     history: new BrowserRouter().history,
+//     route: {
+//         location: {},
+//         match: {},
+//     },
+// }
+
+// const createContext = () => ({
+//     context: { router },
+//     childContextTypes: { router: shape({}) },
+// })
+
 describe('<CrudPureContainer />', ()=>{
 
     let componentShallowed
     let instance
 
     beforeEach(()=> {
-        componentShallowed = shallow(<CrudPureContainer {...props} />)
+        componentShallowed = mount(
+            <MemoryRouter>
+                <CrudPureContainer {...props} />
+            </MemoryRouter>
+        )
+        
         instance = componentShallowed.instance()
     })
 
@@ -66,7 +86,7 @@ describe('<CrudPureContainer />', ()=>{
 
     describe('#render', ()=>{
         it('should render <table />, <thead />, <tr/> and <td />', ()=>{
-            const component = mount(<CrudPureContainer {...newProps} />)
+            const component = mount(<MemoryRouter><CrudPureContainer {...newProps} /></MemoryRouter>)
             expect(component.find('thead tr').length).toBe(1)
             expect(component.find('tbody tr').length > 0).toBe(true)
         })
@@ -76,7 +96,7 @@ describe('<CrudPureContainer />', ()=>{
 
         it('should call handleDelete', ()=>{
 
-            const component = mount(<CrudPureContainer {...newProps}  />)
+            const component = mount(<MemoryRouter><CrudPureContainer {...newProps}  /></MemoryRouter>)
             
             expect(component.find('.btn-exclude').length).toBe(1)
 
@@ -89,7 +109,7 @@ describe('<CrudPureContainer />', ()=>{
             const newMockItem = MOCK_ITEM.id = ''
             const searchPosts = [ newMockItem ]
 
-            const component = mount(<CrudPureContainer {...newProps} searchPosts={searchPosts} />)
+            const component = mount(<MemoryRouter><CrudPureContainer {...newProps} searchPosts={searchPosts} /></MemoryRouter>)
             
             expect(component.find('.btn-exclude').length).toBe(1)
 

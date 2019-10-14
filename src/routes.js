@@ -1,14 +1,24 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Crud } from './components/crud/list'
+import { App } from './App.jsx'
 
-const RouteApp = () =>(
-    <Router>
-        <Switch>
-            <Route exact path="/"><Crud /></Route>
-            {/* <Route path="/:id" children={<Child />} /> */}
-        </Switch>
-    </Router>
+import { Provider } from 'react-redux'
+import configureStore from './store'
+
+const initStore = configureStore()
+
+const RouterApp = () =>(
+    <>
+    <Provider store={ initStore }>
+        <Router>
+            <Switch>
+                <Route exact path="/" component={App}></Route>
+                <Route path="/posts/:id" component={Crud}></Route>
+            </Switch>
+        </Router>
+    </Provider>
+    </>
 )
 
-export default RouteApp
+export default RouterApp

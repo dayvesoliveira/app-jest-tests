@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+//import { Link } from 'react-router-dom'
 
 import './styles.scss'
+import ButtonLink from './button-link'
 
 const GridPost = ({
     searchPosts,
@@ -26,11 +28,12 @@ const GridPost = ({
                         <td>{ post.body }</td>
                         <td>{ post.user }</td>
                         <td>
-                            <a 
+                            <ButtonLink id={ post.id }/>
+                            {/* <Link 
                                 className="btn-edit" 
-                                href={'/posts/'+ post.id }>
+                                to={'/posts/'+ post.id }>
                                 Editar
-                            </a>
+                            </Link> */}
                             <button 
                                 className="btn-exclude" 
                                 onClick={()=>handleDelete(post.id)}>

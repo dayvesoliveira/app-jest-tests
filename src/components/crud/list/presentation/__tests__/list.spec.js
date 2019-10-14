@@ -1,11 +1,27 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
+import { MemoryRouter } from 'react-router-dom'
+// import { shape } from 'prop-types'
 
 import GridPost from '..'
 
 import { MOCK_POSTS } from '../../../../../config/tests/__mocks__/posts.mock'
 
 const listPostsMock = MOCK_POSTS
+
+
+// const router = {
+//     history: new BrowserRouter().history,
+//     route: {
+//         location: {},
+//         match: {},
+//     },
+// }
+
+// const createContext = () => ({
+//     context: { router },
+//     childContextTypes: { router: shape({}) },
+// })
 
 describe('<GridPost />', () => {
 
@@ -21,7 +37,7 @@ describe('<GridPost />', () => {
     let wrapper
 
     beforeEach(()=>{
-        wrapper = shallow(<GridPost {...props} />)
+        wrapper = mount(<MemoryRouter><GridPost {...props} /></MemoryRouter>)
     })
 
     describe('utilizando o enzyme para fazer os teste de rederização',()=>{
@@ -47,21 +63,22 @@ describe('<GridPost />', () => {
 
         it('valida se o evento foi disparado ao clicar em btn-edit', () => {
             
-            const component = mount(<GridPost { ...propsEvents } />)
+            const component = mount(<MemoryRouter><GridPost { ...propsEvents } /></MemoryRouter>)
 
-            component.find('.btn-edit').simulate('click')
+            const link = component.find('Link')
+            link.simulate('click')
             
-            expect(component.find('.btn-edit')).toMatchSnapshot()
+            expect(link).toMatchSnapshot()
 
         })
 
         it('valida se o evento foi disparado ao clicar em btn-exclude', () => {
             const spy = jest.fn()
-            const component = mount(<GridPost {...propsEvents} handleDelete={spy} />)
+            const component = mount(<MemoryRouter><GridPost {...propsEvents} handleDelete={spy} /></MemoryRouter>)
 
             expect(component.find('.btn-exclude').length).toBe(1)
 
-            component.find('.btn-exclude').simulate('click')
+            component.find('button.btn-exclude').simulate('click')
             
             expect(component.find('.btn-exclude')).toMatchSnapshot()
 

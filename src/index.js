@@ -1,15 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
 
-import configureStore from './store'
-import { App } from './App.jsx'
-
-const initStore = configureStore()
+import RouterApp from './routes'
 
 ReactDOM.render(
-    <Provider store={ initStore }>
-        <App />
-    </Provider>,
+    <RouterApp />,
     document.getElementById('root')
 )
