@@ -15,7 +15,7 @@ describe('detail reducer', ()=>{
         })
     
         it('should return the `INSERT_UPDATE_POST` set input value', ()=>{
-            expect(detail({},{type: INSERT_UPDATE_POST, { "value1": 222 })).toMatchSnapshot()
+            expect(detail({},{type: INSERT_UPDATE_POST, "value1": 222 })).toMatchSnapshot()
         })
     
         it('should return the `INSERT_UPDATE_POST` state', ()=>{
