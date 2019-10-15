@@ -10,3 +10,14 @@ export const POST_GET_SUCCESS           = "POST_GET_SUCCESS"
 export const POST_ERROR                 = "POST_ERROR"
 export const POST_SUCCESS               = "POST_SUCCESS"
 
+export const changeModelValue = ({fieldName, value}) =>({
+    type: INSERT_UPDATE_POST,
+    payload: { [fieldName]: value }
+})
+
+export const filterUsers = () => {
+
+}
+
+
+
