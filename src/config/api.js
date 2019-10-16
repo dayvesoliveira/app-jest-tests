@@ -2,21 +2,23 @@ import { create } from 'axios'
 import Auth from './auth'
 import environments from './environments'
 
-const api = () => {
+const apiAxios = (() => {
 
-    const _api = create({
+    const api = create({
         baseURL: environments.baseURL
     })
     
-    _api.interceptors.request.use(async config => {
-        const token = Auth.getToken();
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
-        }
-        return config
-    })
+    if (api) {
+        api.interceptors.request.use(async config => {
+            const token = Auth.getToken();
+            if (token) {
+            config.headers.Authorization = `Bearer ${token}`
+            }
+            return config
+        })
+    }
 
-    return _api
-}
+    return api
+})()
 
-export default api()
+export default apiAxios
