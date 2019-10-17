@@ -19,11 +19,6 @@ export const USER_GET                   = "USER_GET"
 export const USER_GET_SUCCESS           = "USER_GET_SUCCESS"
 export const USER_GET_ERROR             = "USER_GET_ERROR"
 
-export const changeModelValue = ({fieldName, value}) =>({
-    type: INSERT_UPDATE_POST,
-    payload: { [fieldName]: value }
-})
-
 export const changeFilterUsers = payload => dispatch => {
     if (payload) 
         dispatch(filterUsers(payload))
@@ -64,11 +59,21 @@ export const removeLoadingUsers = () => ({
     type: USER_GET_SUCCESS
 })
 
+export const setModel = payload => ({
+    type: POST_SUCCESS,
+    payload
+})
+
+export const changeModelValue = (fieldName, value) =>({
+    type: INSERT_UPDATE_POST,
+    [fieldName]: value
+})
+
 export const fetchSubmitPost = () => async dispatch => {
     dispatch(loadingPost())
     try {
         const users = await api.get('/users')
-        dispatch(filterUsers(users))
+        dispatch(setModel(users))
         dispatch(removeLoadingPost())
     } catch(e) {
         dispatch(errorFetchSubmitPost(e && e.message || 'Error!'))
@@ -77,7 +82,7 @@ export const fetchSubmitPost = () => async dispatch => {
 
 export const errorFetchSubmitPost = err => ({
     type: POST_ERROR,
-    message: err
+    error: err
 })
 
 export const loadingPost = () => ({

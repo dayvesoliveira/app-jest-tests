@@ -15,12 +15,12 @@ export const initialState = {
     value2: ''
 }
 
-export const detail = ( state=initialState, { type, model }) => {
+export const detail = ( state=initialState, { type, payload }) => {
     switch(type) {
         case INSERT_UPDATE_POST:
             return {
                 ...state,
-                ...model
+                ...payload
             }
         default: 
             return state
@@ -44,12 +44,12 @@ export const loading = (state = true, { type }) => {
     }
 }
 
-export const error = (state = null, { type, message }) => {
+export const error = (state = null, { type, error }) => {
 	switch (type) {
 		case POST_ERROR:
 		case POST_GET_ERROR:
         case USER_GET_ERROR:
-			return message
+			return error
 		default:
 			return state
 	}

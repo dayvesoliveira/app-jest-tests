@@ -49,9 +49,9 @@ describe('detail reducer', ()=>{
             [POST_GET_ERROR, 'POST_GET_ERROR--Messages'],
             [POST_ERROR, 'POST_ERROR--Messages']
         ])
-        ('should return the `%p` set %s input value', (type, message)=>{
-            expect(error(null, { type, message })).toMatchSnapshot()
-            expect(error(undefined, { type, message })).toBe(message)
+        ('should return the `%p` set %s input value', (type, err)=>{
+            expect(error(null, { type, error: err })).toMatchSnapshot()
+            expect(error(undefined, { type, error: err })).toBe(err)
         })
     })
 })
