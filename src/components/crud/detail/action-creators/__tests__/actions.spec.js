@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import {
     fetchUsersList,
+    resetFilterUsers,
     loadingUsers,
     removeLoadingUsers,
     filterUsers,
@@ -18,7 +19,9 @@ import {
     USER_GET,
     POST_SUCCESS,
     USER_GET_SUCCESS,
-    POST_ERROR
+    POST_ERROR,
+    USER_LIST_FILTER,
+    USER_LIST_RESET
 } from '..'
 
 import api from '../../../../../config/api'
@@ -81,16 +84,34 @@ describe('#actions', ()=>{
 
     describe('#Users', ()=>{
 
-        it('changeFilterUsers', ()=>{
-    
+        it('#changeFilterUsers, esperando a chamada filterUsers', ()=>{
+            const payload = { value1: "teste" }
+            changeFilterUsers(payload)(dispatch)
+            expect(dispatch).toHaveBeenCalledWith(
+                filterUsers(payload)
+            )
         })
 
-        it('filterUsers', ()=>{
-            
+        it('#changeFilterUsers, esperando a chamada resetFilterUsers', ()=>{
+            const payload = undefined
+            changeFilterUsers(payload)(dispatch)
+            expect(dispatch).toHaveBeenCalledWith(
+                resetFilterUsers(payload)
+            )
+        })
+
+        it('executando o teste de retorno de filterUsers', ()=>{
+            const payload = {}
+            expect(filterUsers(payload)).toEqual({
+                type: USER_LIST_FILTER,
+                payload
+            })
         })
 
         it('resetFilterUsers', ()=>{
-    
+            expect(resetFilterUsers()).toEqual({
+                type: USER_LIST_RESET
+            })
         })
 
         it('fetchUsersList', async ()=>{
