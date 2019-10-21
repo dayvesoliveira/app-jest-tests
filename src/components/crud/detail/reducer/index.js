@@ -1,27 +1,42 @@
-import Redux, { combineReducers } from 'redux'
+import { combineReducers } from 'redux'
 import { 
-    INSERT_UPDATE_POST,
-    POST_GET_ERROR,
-    POST_GET_SUCCESS,
-    POST_ERROR,
-    POST_SUCCESS,
+    USER_LIST_FILTER,
+    USER_LIST_SUCCESS,
+    USER_LIST_FAILURE,
+    USER_LIST_RESET,
     USER_GET,
     USER_GET_SUCCESS,
-    USER_GET_ERROR
+    USER_GET_ERROR,
+    POST_NEW_ITEM,
+    POST_GET_ID,
+    POST_GET_ID_SUCCESS,
+    POST_GET_ID_FAILURE,
+    POST_SAVE,
+    POST_SAVE_SUCCESS,
+    POST_SAVE_ERROR
 } from '../action-creators'
 
 export const initialState = {
-    value1: '',
-    value2: ''
+    userId: '',
+    id:     '',
+    title:  '',
+    body:   ''
+}
+
+export const save = ( state=initialState, { type, payload }) => {
+    switch(type) {
+        case POST_SAVE:
+            return payload
+        default: 
+            return state
+    }
 }
 
 export const detail = ( state=initialState, { type, payload }) => {
     switch(type) {
-        case INSERT_UPDATE_POST:
-            return {
-                ...state,
-                ...payload
-            }
+        case POST_NEW_ITEM:
+        case POST_GET_ID:
+            return payload
         default: 
             return state
     }
@@ -29,15 +44,18 @@ export const detail = ( state=initialState, { type, payload }) => {
 
 export const loading = (state = true, { type }) => {
     switch (type) {
-        case INSERT_UPDATE_POST:
+        case POST_SAVE:
         case USER_GET:
+        case POST_GET_ID:
             return true
-        case POST_GET_ERROR:
-        case POST_GET_SUCCESS:
-        case POST_ERROR:
-        case POST_SUCCESS:
+        case USER_LIST_SUCCESS:
+        case USER_LIST_FAILURE:
         case USER_GET_SUCCESS:
         case USER_GET_ERROR:
+        case POST_GET_ID_SUCCESS:
+        case POST_GET_ID_FAILURE:
+        case POST_SAVE_SUCCESS:
+        case POST_SAVE_ERROR:
             return false
         default: 
             return state
@@ -46,9 +64,10 @@ export const loading = (state = true, { type }) => {
 
 export const error = (state = null, { type, error }) => {
 	switch (type) {
-		case POST_ERROR:
-		case POST_GET_ERROR:
+        case POST_GET_ID_FAILURE:
+        case USER_LIST_FAILURE:
         case USER_GET_ERROR:
+        case POST_SAVE_ERROR:
 			return error
 		default:
 			return state
@@ -56,7 +75,8 @@ export const error = (state = null, { type, error }) => {
 };
 
 export default combineReducers({
-	detail,
+    detail,
+    save,
 	loading,
 	error
 })

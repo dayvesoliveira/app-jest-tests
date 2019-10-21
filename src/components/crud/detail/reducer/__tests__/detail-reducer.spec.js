@@ -46,8 +46,8 @@ describe('detail reducer', ()=>{
         })
                 
         it.each([
-            [POST_GET_ERROR, 'POST_GET_ERROR--Messages'],
-            [POST_ERROR, 'POST_ERROR--Messages']
+            [POST_GET_ERROR, { message: 'POST_GET_ERROR--Messages'}],
+            [POST_ERROR, {message: 'POST_ERROR--Messages'}]
         ])
         ('should return the `%p` set %s input value', (type, err)=>{
             expect(error(null, { type, error: err })).toMatchSnapshot()

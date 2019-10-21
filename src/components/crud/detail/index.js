@@ -1,5 +1,3 @@
-/**
- export { default as CrudDetail } from './container'
- */
- export { default as reducerDetail } from './reducer'
+export { default as CrudDetail } from './container'
+export { default as reducer } from './reducer'
  

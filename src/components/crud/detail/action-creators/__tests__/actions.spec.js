@@ -108,28 +108,23 @@ describe('#actions', ()=>{
             })
         })
 
-        it('resetFilterUsers', ()=>{
+        it('executando o teste de retorno da funcao resetFilterUsers', ()=>{
             expect(resetFilterUsers()).toEqual({
                 type: USER_LIST_RESET
             })
         })
 
         it('fetchUsersList', async ()=>{
-            /*const mockResponse = {
-                data: {}
+            const mockResponse = {
+                data: {
+                    test: {}
+                }
             }
-            
             api.get.mockReturnValue(Promise.resolve(mockResponse))
-
             await fetchUsersList()(dispatch)
-
             expect(dispatch).toHaveBeenCalledWith(
-                loadingUsers({type: INSERT_UPDATE_POST})
+                filterUsers(mockResponse)
             )
-
-            expect(dispatch).toHaveBeenCalledWith(
-                filterUsers({type: POST_GET_SUCCESS})
-            )*/
         })
 
         it('loadingUsers', ()=>{

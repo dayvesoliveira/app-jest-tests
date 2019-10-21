@@ -1,23 +1,23 @@
 import api from '../../../../config/api'
 
-export const USER_LIST_FILTER       = "USER_LIST_FILTER"
-export const USER_LIST_SUCCESS      = "USER_LIST_SUCCESS"
-export const USER_LIST_FAILURE      = "USER_LIST_FAILURE"
-export const USER_LIST_RESET        = "USER_LIST_RESET"
+export const FETCH_SEARCH_ID            = "FETCH_SEARCH_ID_DATA"
+export const FETCH_SEARCH_ID_SUCCESS    = "FETCH_SEARCH_ID_SUCCESS"
+export const FETCH_SEARCH_ID_FAILURE    = "FETCH_SEARCH_ID_FAILURE"
 
-export const USER_GET               = "USER_GET"
-export const USER_GET_SUCCESS       = "USER_GET_SUCCESS"
-export const USER_GET_ERROR         = "USER_GET_ERROR"
+export const INSERT_UPDATE_POST         = "INSERT_UPDATE_POST"
 
-export const POST_NEW_ITEM          = "POST_NEW_ITEM"
-export const POST_GET_ID            = "POST_GET_ID"
-export const POST_GET_ID_SUCCESS    = "POST_GET_ID_SUCCESS"
-export const POST_GET_ID_FAILURE    = "POST_GET_ID_FAILURE"
+export const POST_GET_ERROR             = "POST_GET_ERROR"
+export const POST_GET_SUCCESS           = "POST_GET_SUCCESS"
 
-export const POST_SAVE              = "POST_SAVE"
-export const POST_SAVE_SUCCESS      = "POST_SAVE_SUCCESS"
-export const POST_SAVE_ERROR        = "POST_SAVE_ERROR"
+export const POST_ERROR                 = "POST_ERROR"
+export const POST_SUCCESS               = "POST_SUCCESS"
 
+export const USER_LIST_FILTER           = "USER_LIST_FILTER"
+export const USER_LIST_RESET            = "USER_LIST_RESET"
+
+export const USER_GET                   = "USER_GET"
+export const USER_GET_SUCCESS           = "USER_GET_SUCCESS"
+export const USER_GET_ERROR             = "USER_GET_ERROR"
 
 export const changeFilterUsers = payload => dispatch => {
     if (payload) 
@@ -35,19 +35,6 @@ export const resetFilterUsers = () => ({
     type: USER_LIST_RESET
 })
 
-export const errorFetchUsersList = err => ({
-    type: USER_GET_ERROR,
-    message: err
-})
-
-export const loadingUsers = () => ({
-    type: USER_GET
-})
-
-export const successLoadingUsers = () => ({
-    type: USER_GET_SUCCESS
-})
-
 export const fetchUsersList = () => async dispatch => {
     dispatch(loadingUsers())
     try {
@@ -58,6 +45,19 @@ export const fetchUsersList = () => async dispatch => {
         dispatch(errorFetchUsersList(e && e.message || 'Error!'))
     }
 }
+
+export const errorFetchUsersList = err => ({
+    type: USER_GET_ERROR,
+    message: err
+})
+
+export const loadingUsers = () => ({
+    type: USER_GET
+})
+
+export const removeLoadingUsers = () => ({
+    type: USER_GET_SUCCESS
+})
 
 export const setModel = payload => ({
     type: POST_SUCCESS,
