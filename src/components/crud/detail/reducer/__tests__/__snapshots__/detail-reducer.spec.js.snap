@@ -6,37 +6,17 @@ exports[`detail reducer #detail should return the \`INSERT_UPDATE_POST\` state 1
 
 exports[`detail reducer #detail should return the initial state by default 1`] = `Object {}`;
 
-exports[`detail reducer #error should return the \`"POST_ERROR"\` set [object Object] input value 1`] = `
-Object {
-  "message": "POST_ERROR--Messages",
-}
-`;
+exports[`detail reducer #error should return the \`undefined\` set [object Object] input value 1`] = `null`;
 
-exports[`detail reducer #error should return the \`"POST_GET_ERROR"\` set [object Object] input value 1`] = `
-Object {
-  "message": "POST_GET_ERROR--Messages",
-}
-`;
-
-exports[`detail reducer #error should return the \`undefined\` set [object Object] input value 1`] = `
-Object {
-  "message": "POST_GET_ERROR--Messages",
-}
-`;
-
-exports[`detail reducer #error should return the \`undefined\` set [object Object] input value 2`] = `
-Object {
-  "message": "POST_ERROR--Messages",
-}
-`;
+exports[`detail reducer #error should return the \`undefined\` set [object Object] input value 2`] = `null`;
 
 exports[`detail reducer #error should return the initial state by default 1`] = `Object {}`;
 
 exports[`detail reducer #loading should return the initial state by default 1`] = `
 Object {
   "body": "",
-  "id": null,
+  "id": "",
   "title": "",
-  "userId": null,
+  "userId": "",
 }
 `;

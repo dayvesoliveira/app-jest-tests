@@ -1,10 +1,5 @@
 import api from '../../../../config/api'
 
-export const USER_LIST_FILTER       = "USER_LIST_FILTER"
-export const USER_LIST_SUCCESS      = "USER_LIST_SUCCESS"
-export const USER_LIST_FAILURE      = "USER_LIST_FAILURE"
-export const USER_LIST_RESET        = "USER_LIST_RESET"
-
 export const USER_GET               = "USER_GET"
 export const USER_GET_SUCCESS       = "USER_GET_SUCCESS"
 export const USER_GET_ERROR         = "USER_GET_ERROR"
@@ -17,6 +12,37 @@ export const POST_GET_ID_FAILURE    = "POST_GET_ID_FAILURE"
 export const POST_SAVE              = "POST_SAVE"
 export const POST_SAVE_SUCCESS      = "POST_SAVE_SUCCESS"
 export const POST_SAVE_ERROR        = "POST_SAVE_ERROR"
+
+export const USER_LIST_GET          = "USER_LIST_GET"
+export const USER_LIST_GET_SUCCESS  = "USER_LIST_GET_SUCCESS"
+export const USER_LIST_GET_FAILURE  = "USER_LIST_GET_FAILURE"
+export const USER_LIST_FILTER       = "USER_LIST_FILTER"
+export const USER_LIST_RESET        = "USER_LIST_RESET"
+
+
+export const fetchUsersList = () => async dispatch => {
+    dispatch(startLoadingUsers())
+    try {
+        const users = await api.get('/users')
+        dispatch(filterUsers(users))
+        dispatch(stopLoadingUsers())
+    } catch(e) {
+        dispatch(errorFetchUsersList(e && e.message || 'Error!'))
+    }
+}
+
+export const startLoadingUsers = () => ({
+    type: USER_LIST_GET
+})
+
+export const stopLoadingUsers = () => ({
+    type: USER_LIST_GET_SUCCESS
+})
+
+export const errorFetchUsersList = err => ({
+    type: USER_LIST_GET_FAILURE,
+    message: err
+})
 
 
 export const changeFilterUsers = payload => dispatch => {
@@ -35,29 +61,7 @@ export const resetFilterUsers = () => ({
     type: USER_LIST_RESET
 })
 
-export const errorFetchUsersList = err => ({
-    type: USER_GET_ERROR,
-    message: err
-})
 
-export const loadingUsers = () => ({
-    type: USER_GET
-})
-
-export const successLoadingUsers = () => ({
-    type: USER_GET_SUCCESS
-})
-
-export const fetchUsersList = () => async dispatch => {
-    dispatch(loadingUsers())
-    try {
-        const users = await api.get('/users')
-        dispatch(filterUsers(users))
-        dispatch(removeLoadingUsers())
-    } catch(e) {
-        dispatch(errorFetchUsersList(e && e.message || 'Error!'))
-    }
-}
 
 export const setModel = payload => ({
     type: POST_SUCCESS,
