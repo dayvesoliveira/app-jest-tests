@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`detail reducer #detail should return the \`POST_NEW_ITEM\` set input value 1`] = `undefined`;
+exports[`detail reducer #detail should return the \`POST_NEW_ITEM\` set input value 1`] = `Object {}`;
 
 exports[`detail reducer #detail should return the \`POST_SAVE\` state 1`] = `Object {}`;
 
@@ -47,8 +47,8 @@ exports[`detail reducer #error should return the initial state by default 1`] = 
 exports[`detail reducer #loading should return the initial state by default 1`] = `
 Object {
   "body": "",
-  "id": "",
+  "id": null,
   "title": "",
-  "userId": "",
+  "userId": null,
 }
 `;

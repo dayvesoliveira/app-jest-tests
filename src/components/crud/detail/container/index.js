@@ -40,7 +40,7 @@ class DetailContainer extends React.PureComponent {
         const { id, title} = detail
         return (
             <>{ loading ? 
-                    <h2>aguarde</h2> :
+                    <span>aguarde...</span> :
                     <span>{ id} - {title}</span>
             }</>)
     }
