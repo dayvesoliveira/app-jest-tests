@@ -11,9 +11,11 @@ import {
 
 import {
     fetchDetail,
+    loading,
+    error
 } from '../selector'
 
-class DetailForm extends React.PureComponent {
+class DetailContainer extends React.PureComponent {
 
     static propTypes = {
         fetchUsersList: PropTypes.func,
@@ -34,19 +36,19 @@ class DetailForm extends React.PureComponent {
     }
 
     render(){
-        const { detail } = this.props
-        debugger
-        const {userId, title} = detail
-        return (<h1>
-            ok{
-                `${userId} - ${title}`
-            }
-        </h1>)
+        const { detail, loading } = this.props
+        const { id, title} = detail
+        return (
+            <>{ loading ? 
+                    <h2>aguarde</h2> :
+                    <span>{ id} - {title}</span>
+            }</>)
     }
 }
 
 const mapStateToProps = state =>({
-    detail: fetchDetail(state)
+    detail:  fetchDetail(state),
+    loading: loading(state) 
 })
 
 const actionCreators = {
@@ -57,9 +59,9 @@ const actionCreators = {
     changeModelValue
 }
 
-export { DetailForm as DetailPureComponent }
+export { DetailContainer as DetailPureComponent }
 
 export default connect(
     mapStateToProps,
     actionCreators
-)(DetailForm)
+)(DetailContainer)

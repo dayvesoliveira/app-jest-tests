@@ -3,25 +3,31 @@ import { mount, shallow, render } from 'enzyme'
 import axios from 'axios'
 
 import {
-    fetchUsersList,
-    resetFilterUsers,
-    loadingUsers,
-    removeLoadingUsers,
-    filterUsers,
-    changeFilterUsers,
-    fetchSubmitPost,
-    errorFetchSubmitPost,
-    loadingPost,
-    removeLoadingPost,
-    changeModelValue,
-    setModel,
-    INSERT_UPDATE_POST,
     USER_GET,
-    POST_SUCCESS,
-    USER_GET_SUCCESS,
-    POST_ERROR,
+    USER_GET_ERROR,
+    POST_NEW_ITEM,
+    POST_GET_ID,
+    POST_GET_ID_FAILURE,
+    POST_SAVE,
+    POST_SAVE_ERROR,
+    USER_LIST_GET,
+    USER_LIST_GET_FAILURE,
     USER_LIST_FILTER,
-    USER_LIST_RESET
+    USER_LIST_RESET,
+
+    fetchUsersList,
+    startLoadingUsers,
+    filterUsers,
+    errorFetchUsersList,
+    changeFilterUsers,
+    resetFilterUsers,
+    setModel,
+    changeModelValue,
+    fetchPost,
+    startLoadingPost,
+    errorFetchSubmitPost,
+    fetchSubmitPost,
+    errorFetchPost
 } from '..'
 
 import api from '../../../../../config/api'
@@ -39,47 +45,77 @@ describe('#actions', ()=>{
 
     describe('#Posts', ()=>{
 
+        const ID_VAR = 111
+        const data = {
+            userId: 1,
+            id:     1,
+            title:  '',
+            body:   ''
+        }
+        const mockResponse = { data }
+
         it('changeModelValue', ()=>{
             const fieldName = "value1",
                   value     = "teste"
             expect(changeModelValue(fieldName, value)).toEqual({
-                type: INSERT_UPDATE_POST,
+                type: POST_NEW_ITEM,
                 value1: "teste",
             })
-        })
-
-        it('fetchSubmitPost', async ()=>{
-            const mockResponse = {
-                data: {
-                    test: {}
-                }
-            }
-            api.get.mockReturnValue(Promise.resolve(mockResponse))
-            await fetchSubmitPost()(dispatch)
-            expect(dispatch).toHaveBeenCalledWith(
-                setModel(mockResponse)
-            )
         })
 
         it('errorFetchSubmitPost', ()=>{
             const e = {message: "error"}
             expect(errorFetchSubmitPost(e)).toEqual({
-                type:  POST_ERROR,
+                type:  POST_SAVE_ERROR,
                 error: e
             })
         })
 
-        it('loadingPost', ()=>{
-            expect(loadingPost()).toEqual({
-                type: INSERT_UPDATE_POST
+        it('startLoadingPost', ()=>{
+            expect(startLoadingPost()).toEqual({
+                type: POST_SAVE
             })
         })
 
-        it('removeLoadingPost', ()=>{
-            expect(removeLoadingPost()).toEqual({
-                type: POST_SUCCESS
+        describe('Post#fetchSubmitPost', ()=>{
+
+            it('testa se a funcao setModel foi executada', async ()=>{
+                api.post.mockReturnValue(Promise.resolve(mockResponse))
+                await fetchSubmitPost()(dispatch)
+                expect(dispatch).toHaveBeenCalledWith( setModel(data) )
+            })
+    
+            it('errorFetchSubmitPost', async ()=>{
+                const err = {"message": "[Error: Error!]"}
+                api.post.mockReturnValue(Promise.reject(err))
+                await fetchSubmitPost()(dispatch)
+                expect(dispatch).toHaveBeenCalledWith( errorFetchSubmitPost(err.message) )
+            })
+
+        })
+
+        describe('#fetchPost', ()=>{
+            it('startLoadingPost', async ()=>{
+                api.get.mockReturnValue(Promise.resolve(mockResponse))
+                await fetchPost(ID_VAR)(dispatch)
+                expect(dispatch).toHaveBeenCalledWith( startLoadingPost() )
+            })
+
+            it('setModel', async ()=>{
+                api.get.mockReturnValue(Promise.resolve(mockResponse))
+                await fetchPost(ID_VAR)(dispatch)
+                expect(dispatch).toHaveBeenCalledWith( setModel(data) )
+            })
+
+            it('errorFetchPost', async ()=>{
+                const err = {"message": "[Error: Error!]"}
+                api.get.mockReturnValue(Promise.reject(err))
+                await fetchPost(ID_VAR)(dispatch)
+                expect(dispatch).toHaveBeenCalledWith( errorFetchPost(err.message) )
             })
         })
+
+        
     })
 
     describe('#Users', ()=>{
@@ -114,30 +150,43 @@ describe('#actions', ()=>{
             })
         })
 
-        it('fetchUsersList', async ()=>{
-            const mockResponse = {
-                data: {
-                    test: {}
+        it('startLoadingUsers', ()=>{
+            expect(startLoadingUsers()).toEqual({
+                type: USER_LIST_GET
+            })
+        })
+
+        describe('#fetchUsersList',()=>{
+
+            it('startLoadingUsers', async ()=>{
+                api.get.mockReturnValue(Promise.resolve({data:{}}))
+                await fetchUsersList()(dispatch)
+                expect(dispatch).toHaveBeenCalledWith(startLoadingUsers())
+            })
+
+            it('fetchUsersList', async ()=>{
+                const mockResponse = {
+                    data: {
+                        test: {}
+                    }
                 }
-            }
-            api.get.mockReturnValue(Promise.resolve(mockResponse))
-            await fetchUsersList()(dispatch)
-            expect(dispatch).toHaveBeenCalledWith(
-                filterUsers(mockResponse)
-            )
-        })
+                api.get.mockReturnValue(Promise.resolve(mockResponse))
+                await fetchUsersList()(dispatch)
+                expect(dispatch).toHaveBeenCalledWith(
+                    filterUsers(mockResponse)
+                )
+            })
 
-        it('loadingUsers', ()=>{
-            expect(loadingUsers()).toEqual({
-                type: USER_GET
+            it('errorFetchUsersList', async ()=>{
+                const err = {"message": "[Error: Error!]"}
+                api.get.mockReturnValue(Promise.reject(err))
+                await fetchUsersList()(dispatch)
+                expect(dispatch).toHaveBeenCalledWith(
+                    errorFetchUsersList(err.message)
+                )
             })
         })
 
-        it('removeLoadingUsers', ()=>{
-            expect(removeLoadingUsers()).toEqual({
-                type: USER_GET_SUCCESS
-            })
-        })
     })
 
 
