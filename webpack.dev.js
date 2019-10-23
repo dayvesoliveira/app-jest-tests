@@ -25,8 +25,10 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
+            title: 'alteracao do title do app',
             template: './src/index.html',
-            filename: './index.html'
+            filename: './index.html',
+            favicon:  './src/favicon.ico'
         })
     ],
     devServer: {

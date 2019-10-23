@@ -1,0 +1,70 @@
+import React, { Suspense, lazy } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import configureStore from './store'
+// import { createBrowserHistory } from "history"
+
+import { App } from './App.jsx'
+//import { Crud } from './components/crud/list'
+//import { CrudDetail } from './components/crud/detail'
+
+// const App = lazy(() => import('./App.jsx'))
+//const CrudDetail = lazy(() => import('./components/crud/detail'))
+
+const initStore = configureStore()
+//const history   = createBrowserHistory()
+
+const NotFound = ()=>(<h1>Ops, ocorreu um erro!</h1>)
+
+const routes = [
+    {
+        path: '/',
+        component: App,
+        exact: true,
+        routes:[
+            {
+                path: '/posts/:id',
+                loadChildren: lazy(() => import('./components/crud/detail')),
+                exact: false,
+                routes:[]
+            }
+        ]
+    },
+    {
+        path: '*',
+        renderFunc: () =>(<NotFound />),
+        exact: false,
+        routes:[]
+    }
+]
+
+const RouterApp = () =>(
+    <Provider store={ initStore }>
+        <Router>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Switch>
+                {
+                    routes && routes.map(({ 
+                        path, 
+                        component, 
+                        loadChildren, 
+                        renderFunc,
+                        exact
+                     }, idx) =>(
+                        <Route 
+                            key={ idx } exact={ exact }
+                            path={ path } 
+                            component={ ( component ? component : loadChildren ) } 
+                            render={ renderFunc }
+                            />
+                    ))
+                    // <Route exact path="/" component={ App } />
+                    // <Route path="/posts/:id" component={ lazy(() => import('./components/crud/detail')) } />
+                }
+                </Switch>
+            </Suspense>
+        </Router>
+    </Provider>
+)
+
+export default RouterApp

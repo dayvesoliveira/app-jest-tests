@@ -1,18 +1,41 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Crud } from './components/crud/list'
+import { BrowserRouter as Router } from 'react-router-dom'
+// import { Crud } from './components/crud/list'
+
+import Routes from './routes'
+import { Provider } from 'react-redux'
+import configureStore from './store'
+
+const initStore = configureStore()
+
+import { default as routePosts } from './routes/post.routes'
+
 
 export class App extends React.Component {
+    
+    constructor(props){
+        super(props)
+    }
+
     render(){
         return (
-            <>
-                <h1>UI<b>Faces</b></h1>
-                <label>
-                    Username: 
-                    <input placeholder="somenete para testes com jest" />
-                </label>
-                <Crud />
-            </>
+            <Provider store={ initStore }>
+                <>
+                    <h1>UI<b>Faces</b></h1>
+                    <label>
+                        Username: 
+                        <input placeholder="somenete para testes com jest" />
+                    </label>
+                    <br />
+                    <br />
+                    <Provider store={ initStore }>
+                        <Router>
+                            <Routes routes={ routePosts }/>
+                        </Router>
+                    </Provider>
+                </>
+            </Provider>
         )
     }
 }
