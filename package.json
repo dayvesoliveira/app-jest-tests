@@ -6,8 +6,8 @@
   "author": "Dayves Oliveira <dayvesoliveira@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --hot --open",
-    "build": "webpack production",
+    "dev": "webpack-dev-server --config webpack.dev.js --hot --open",
+    "build": "mkdir dist && webpack --config webpack.prod.js",
     "test": "jest --config jest.config.json --coverage --watch",
     "start:mock": "nodemon ./server/index.js --watch 3001"
   },

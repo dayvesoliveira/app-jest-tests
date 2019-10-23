@@ -1,3 +1,6 @@
-export { default as CrudDetail } from './container'
 export { default as reducer } from './reducer'
+import DetailContainer from './container'
+const CrudDetail = DetailContainer
+export { CrudDetail }
+export default CrudDetail
  
