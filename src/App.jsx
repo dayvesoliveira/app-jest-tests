@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 // import { Crud } from './components/crud/list'
@@ -21,7 +21,7 @@ export class App extends React.Component {
     render(){
         return (
             <Provider store={ initStore }>
-                <>
+                <Fragment>
                     <h1>UI<b>Faces</b></h1>
                     <label>
                         Username: 
@@ -34,7 +34,7 @@ export class App extends React.Component {
                             <Routes routes={ routePosts }/>
                         </Router>
                     </Provider>
-                </>
+                </Fragment>
             </Provider>
         )
     }
