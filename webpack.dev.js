@@ -33,13 +33,14 @@ module.exports = {
         })
     ],
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        contentBase: path.join(__dirname, 'public'),
+        filename: 'bundle.js',
         compress: false,
         port: 3000,
         overlay: {
             warnings: true,
             errors: true
         },
-        //historyApiFallback: true
+        historyApiFallback: true
     }
 }

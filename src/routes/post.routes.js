@@ -14,25 +14,21 @@ const routes = [
         exact: true,
         // routes:[
         //     {
-        //         path: '/posts/:id',
+        //         path: 'posts/:id',
         //         component: CrudDetail,
         //         exact: true,
-        //     },
-        //     {
-        //         path: '*',
-        //         component: NotFound,
-        //     }        
+        //     }       
         // ]
     },
     {
         path: '/posts/:id',
         component: CrudDetail,
-        exact: true,
+        //exact: true,
     },
     {
         path: '*',
         component: NotFound,
-    }
+    },
 ]
 
 export default routes

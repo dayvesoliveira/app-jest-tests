@@ -29,11 +29,9 @@ export class App extends React.Component {
                     </label>
                     <br />
                     <br />
-                    <Provider store={ initStore }>
-                        <Router>
-                            <Routes routes={ routePosts }/>
-                        </Router>
-                    </Provider>
+                    <Router>
+                        <Routes routes={ routePosts }/>
+                    </Router>
                 </Fragment>
             </Provider>
         )

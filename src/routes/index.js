@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
+
 // import { Provider } from 'react-redux'
 // import configureStore from '../store'
 // import { App } from '../App.jsx'
@@ -8,11 +9,11 @@ import { Route, Switch } from 'react-router-dom'
 
 // const initStore = configureStore()
 
-const RouteSubRoute = (route) => (
+const RouteSubRoute = ({component: Component, ...route}) => (
     <Route 
         exact={ route.exact }
         path={ route.path } 
-        render={ props => <route.component {...props} routes={ route.routes } /> }
+        render={ props => <Component {...props} routes={ route.routes } /> }
         />
 )
 
@@ -22,19 +23,22 @@ const Routes = ({
 }) =>(
         <Suspense fallback={<div>Loading...</div>}>
             <Switch>
-            {
-                routes && routes.map((route, index) =>(
-                    <RouteSubRoute key={ index } {...route }
-                        //path={ route.path }
-                        //exact={ route.exact }
-                        //Component={ route.component}
-                        />
+                {
+                    routes && routes.map(
+                        (route, index) =>(
+                            <RouteSubRoute key={ index } {...route } />
+                        )
                     )
-                )
-            }
+                }
+                {/* <Redirect from="/" to="/posts" /> */}
             </Switch>
         </Suspense>
-    // <Provider store={ initStore }>
+)
+
+export default Routes
+
+
+// <Provider store={ initStore }>
     //     <Router>
     //         <Suspense fallback={<div>Loading...</div>}>
     //             <Switch>
@@ -54,9 +58,6 @@ const Routes = ({
     //         </Suspense>
     //     </Router>
     // </Provider>
-)
-
-export default Routes
 
 /*<Route 
     key={ index } exact={ exact }
