@@ -1,8 +1,6 @@
 import React, { lazy } from 'react'
 import { Crud } from '../components/crud/list'
 
-//import { App } from '../App.jsx'
-
 const CrudDetail = lazy(() => import('../components/crud/detail'))
 
 const NotFound   = ()=>(
@@ -17,13 +15,19 @@ const routes = [
         // routes:[
         //     {
         //         path: '/posts/:id',
-        //         component: lazy(() => import('../components/crud/detail')),
-        //     }
+        //         component: CrudDetail,
+        //         exact: true,
+        //     },
+        //     {
+        //         path: '*',
+        //         component: NotFound,
+        //     }        
         // ]
     },
     {
         path: '/posts/:id',
         component: CrudDetail,
+        exact: true,
     },
     {
         path: '*',

@@ -6,6 +6,7 @@ module.exports = {
     // entry: ["@babel/polyfill", "./src/index.js"],
     output:{
         path: path.resolve(__dirname, '/dist'),
+        // publicPath: 'http://localhost:3000',
         filename: 'bundle.js'
     },
     module:{
@@ -25,8 +26,8 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'alteracao do title do app',
-            template: './src/index.html',
+            title:    'alteracao do title do app',
+            template: './public/index.html',
             filename: './index.html',
             favicon:  './src/favicon.ico'
         })

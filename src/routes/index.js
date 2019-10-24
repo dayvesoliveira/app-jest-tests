@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 // import { Provider } from 'react-redux'
 // import configureStore from '../store'
 // import { App } from '../App.jsx'
@@ -8,40 +8,27 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 // const initStore = configureStore()
 
-// const RouteComponent = children =>(
-//     <>
-//     { children }
-//     </>
-// )
-
-const RouteSubRoute = ({
-    exact, 
-    path,
-    Component,
-    routes,
-    ...props
-}) => (
+const RouteSubRoute = (route) => (
     <Route 
-        exact={ exact }
-        path={ path } 
-        render={ props => <Component {...props} routes={ routes } /> }
+        exact={ route.exact }
+        path={ route.path } 
+        render={ props => <route.component {...props} routes={ route.routes } /> }
         />
 )
 
 const Routes = ({
     routes,
-    ...props}) =>(
+    ...props
+}) =>(
         <Suspense fallback={<div>Loading...</div>}>
             <Switch>
             {
                 routes && routes.map((route, index) =>(
-                    <RouteSubRoute 
-                                key={ index } 
-                                {...props }
-                                path={ route.path }
-                                exact={ route.exact }
-                                Component={ route.component}
-                                />
+                    <RouteSubRoute key={ index } {...route }
+                        //path={ route.path }
+                        //exact={ route.exact }
+                        //Component={ route.component}
+                        />
                     )
                 )
             }
@@ -80,4 +67,4 @@ export default Routes
 */
 
 // <Route exact path="/" component={ App } />
-                    // <Route path="/posts/:id" component={ lazy(() => import('./components/crud/detail')) } />
+// <Route path="/posts/:id" component={ lazy(() => import('./components/crud/detail')) } />

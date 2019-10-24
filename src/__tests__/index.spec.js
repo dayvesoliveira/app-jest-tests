@@ -21,7 +21,7 @@ jest.mock("react-dom", () => ({ render: jest.fn() }));
 describe("Application root", () => {
 
     it('renders without crashing', () => {
-        expect(JSON.stringify(Index)).toMatchSnapshot();
+        expect(JSON.stringify(Index)).toMatchSnapshot()
     })
 
     describe('Provided <App />', () => {
@@ -39,7 +39,7 @@ describe("Application root", () => {
 
 		describe('#render', () => {
 			it('should render correctly with redux', () => {
-				expect(providerApp).toBeDefined();
+				expect(providerApp).toBeDefined()
 			})
 		})
 	})
