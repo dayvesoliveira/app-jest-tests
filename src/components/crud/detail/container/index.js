@@ -11,9 +11,12 @@ import {
 
 import {
     fetchDetail,
+    fetchUsers,
     loading,
     error
 } from '../selector'
+
+import DetailFormComponent from '../presentation'
 
 class DetailContainer extends React.PureComponent {
 
@@ -25,6 +28,7 @@ class DetailContainer extends React.PureComponent {
             title:  PropTypes.string,
             body:   PropTypes.string
         }),
+        users:      PropTypes.array,
         loading:        PropTypes.bool,
 		error:          PropTypes.object
     }
@@ -35,20 +39,48 @@ class DetailContainer extends React.PureComponent {
         this.props.fetchUsersList()
     }
 
+    handleChangeInput = event => {
+        this.props.changeModelValue({[event.target.id]: event.target.value })
+        console.log(this.props)
+    }
+
+    handleChangeSelect = event => {
+        this.props.changeModelValue({[event.target.id]: event.target.value })
+        console.log(this.props)
+    }
+
+    handleSubmit = event => {
+        event.preventDefault();
+		console.warn( this.props );
+    }
+
     render(){
-        const { detail, loading } = this.props
+        const { detail, loading, users } = this.props
         const { id, title} = detail
         return (
             <>{ loading ? 
                     <span>aguarde...</span> :
-                    <span>{ id} - {title}</span>
+                    (<>
+                            <span>{ id} - {title}</span>
+                            <br />
+                            <DetailFormComponent
+                                handleChangeInput={ this.handleChangeInput }
+                                handleChangeSelect={ this.handleChangeSelect }
+                                handleSubmit={ this.handleSubmit }
+                                listUsers={ users }
+                                { ...this.props }
+                                />
+                    </>)
             }</>)
     }
 }
 
+
 const mapStateToProps = state =>({
-    detail:  fetchDetail(state),
-    loading: loading(state) 
+    detail:    fetchDetail(state),
+    users:     fetchUsers(state),
+    loading:   loading(state),
+    error:     error(state)
 })
 
 const actionCreators = {

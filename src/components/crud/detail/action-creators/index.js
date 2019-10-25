@@ -20,8 +20,10 @@ export const USER_LIST_RESET        = "USER_LIST_RESET"
 export const fetchUsersList = () => async dispatch => {
     dispatch(startLoadingUsers())
     try {
-        const users = await api.get('/users')
-        dispatch(filterUsers(users))
+        const response = await api.get('/users')
+        console.log(response)
+        const { data } = response
+        dispatch(setUsersList( data ))
     } catch(e) {
         dispatch(errorFetchUsersList(e && e.message || 'Error!'))
     }
@@ -39,12 +41,12 @@ export const errorFetchUsersList = err => ({
 
 export const changeFilterUsers = payload => dispatch => {
     if (payload) 
-        dispatch(filterUsers(payload))
+        dispatch(setUsersList(payload))
     else 
         dispatch(resetFilterUsers())
 }
 
-export const filterUsers = payload => ({
+export const setUsersList = payload => ({
     type: USER_LIST_FILTER,
     payload
 })

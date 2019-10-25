@@ -1,33 +1,36 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 const DetailFormComponent = ({
-    id,
     title,
     body,
-    userId,
-    handleChange,
+    listUsers,
+    handleChangeInput,
+    handleChangeSelect,
     handleSubmit,
-    listUsers
+    ...props
 }) => (
     <>
-        <form noValidate>
+        <form onSubmit={ handleSubmit } noValidate>
             <label>
                 Title
-                <input id="title" onChange={ this.handleChange() } />
+                <input id="title" onChange={ handleChangeInput } value={ title } />
             </label>
             <label>
                 Body
-                <textarea id="body" onChange={ this.handleChange() }></textarea> 
+                <textarea id="body" onChange={ handleChangeInput } value={ body }></textarea> 
             </label>
-            <select>
+            <select onChange={ handleChangeSelect }>
                 <option>Selecione...</option>
              {
-                 listUsers && listUsers.map((item)=>{
-                    <option key={'user'+ item.id } value={ item.id }>{ item.name }</option>
+                 listUsers.map((item)=>{
+                   return  <option key={'user'+ item.id } value={ item.id }>{ item.name }</option>
                  })
              }
             </select>
+            <button>Enviar</button>
+            <Link to="/">Voltar</Link>
         </form>
     </>
 )

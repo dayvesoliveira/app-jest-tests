@@ -17,7 +17,7 @@ import {
 
     fetchUsersList,
     startLoadingUsers,
-    filterUsers,
+    setUsersList,
     errorFetchUsersList,
     changeFilterUsers,
     resetFilterUsers,
@@ -27,7 +27,8 @@ import {
     startLoadingPost,
     errorFetchSubmitPost,
     fetchSubmitPost,
-    errorFetchPost
+    errorFetchPost,
+    usersList
 } from '..'
 
 import api from '../../../../../config/api'
@@ -120,11 +121,13 @@ describe('#actions', ()=>{
 
     describe('#Users', ()=>{
 
-        it('#changeFilterUsers, esperando a chamada filterUsers', ()=>{
+        const LIST_USER_MOCK = [{"id":1, "teste":"teste"}]
+
+        it('#changeFilterUsers, esperando a chamada setUsersList', ()=>{
             const payload = { value1: "teste" }
             changeFilterUsers(payload)(dispatch)
             expect(dispatch).toHaveBeenCalledWith(
-                filterUsers(payload)
+                setUsersList(payload)
             )
         })
 
@@ -136,10 +139,10 @@ describe('#actions', ()=>{
             )
         })
 
-        it('executando o teste de retorno de filterUsers', ()=>{
-            const payload = {}
-            expect(filterUsers(payload)).toEqual({
-                type: USER_LIST_FILTER,
+        it('executando o teste de retorno de setUsersList', ()=>{
+            const payload = LIST_USER_MOCK
+            expect(setUsersList(payload)).toEqual({
+                type: USER_LIST_GET,
                 payload
             })
         })
@@ -159,21 +162,19 @@ describe('#actions', ()=>{
         describe('#fetchUsersList',()=>{
 
             it('startLoadingUsers', async ()=>{
-                api.get.mockReturnValue(Promise.resolve({data:{}}))
+                api.get.mockReturnValue(Promise.resolve({data:[]}))
                 await fetchUsersList()(dispatch)
                 expect(dispatch).toHaveBeenCalledWith(startLoadingUsers())
             })
 
             it('fetchUsersList', async ()=>{
                 const mockResponse = {
-                    data: {
-                        test: {}
-                    }
+                    data: []
                 }
                 api.get.mockReturnValue(Promise.resolve(mockResponse))
                 await fetchUsersList()(dispatch)
                 expect(dispatch).toHaveBeenCalledWith(
-                    filterUsers(mockResponse)
+                    setUsersList(mockResponse)
                 )
             })
 

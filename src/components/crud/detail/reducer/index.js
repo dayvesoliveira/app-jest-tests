@@ -34,6 +34,15 @@ export const detail = ( state=initialState, { type, payload }) => {
     }
 }
 
+export const users = (state=[], { type, payload }) => {
+    switch(type){
+        case USER_LIST_FILTER:
+            return payload
+        default:
+            return state
+    }
+}
+
 export const loading = (state = true, { type }) => {
     switch (type) {
         case POST_SAVE:
@@ -65,6 +74,7 @@ export const error = (state = null, { type, error }) => {
 
 export default combineReducers({
     detail,
+    users,
 	loading,
 	error
 })
