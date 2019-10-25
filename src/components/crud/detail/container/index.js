@@ -46,12 +46,12 @@ class DetailContainer extends React.PureComponent {
 
     handleChangeSelect = event => {
         this.props.changeModelValue({[event.target.id]: event.target.value })
-        console.log(this.props)
+        console.log( this.props.detail )
     }
 
     handleSubmit = event => {
-        event.preventDefault();
-		console.warn( this.props );
+        event.preventDefault()
+		console.log(this.props)
     }
 
     render(){

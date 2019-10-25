@@ -17,11 +17,13 @@ const DetailFormComponent = ({
                 Title
                 <input id="title" onChange={ handleChangeInput } value={ title } />
             </label>
+            <br/>
             <label>
                 Body
                 <textarea id="body" onChange={ handleChangeInput } value={ body }></textarea> 
             </label>
-            <select onChange={ handleChangeSelect }>
+            <br/>
+            <select id="userId" onChange={ handleChangeSelect }>
                 <option>Selecione...</option>
              {
                  listUsers.map((item)=>{
@@ -29,7 +31,9 @@ const DetailFormComponent = ({
                  })
              }
             </select>
+            <br/>
             <button>Enviar</button>
+            <br/>
             <Link to="/">Voltar</Link>
         </form>
     </>
