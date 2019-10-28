@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 const DetailFormComponent = ({
     title,
     body,
+    userId,
     listUsers,
     handleChangeInput,
     handleChangeSelect,
@@ -23,12 +24,14 @@ const DetailFormComponent = ({
                 <textarea id="body" onChange={ handleChangeInput } value={ body }></textarea> 
             </label>
             <br/>
-            <select id="userId" onChange={ handleChangeSelect }>
+            <select id="userId" onChange={ handleChangeSelect } value={ userId }>
                 <option>Selecione...</option>
              {
-                 listUsers.map((item)=>{
-                   return  <option key={'user'+ item.id } value={ item.id }>{ item.name }</option>
-                 })
+                Array.isArray(listUsers) && (
+                    listUsers.map((item)=>{
+                        return  (<option key={'user'+ item.id } value={ item.id }>{ item.name }</option>)
+                    })
+                 )
              }
             </select>
             <br/>

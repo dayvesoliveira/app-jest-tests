@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { 
-    USER_GET,
+    POST_UPDATE_VALUE,
     USER_GET_ERROR,
     POST_NEW_ITEM,
     POST_GET_ID,
@@ -23,8 +23,10 @@ export const initialState = {
 export const detail = ( state=initialState, { type, payload }) => {
     switch(type) {
         case POST_NEW_ITEM:
+        case POST_UPDATE_VALUE:
             return {
-                ...state
+                ...state,
+                ...payload
             }
         case POST_GET_ID:
         case POST_SAVE_UPDATE:

@@ -7,6 +7,7 @@ export const POST_NEW_ITEM          = "POST_NEW_ITEM"
 export const POST_GET_ID            = "POST_GET_ID"
 export const POST_GET_ID_FAILURE    = "POST_GET_ID_FAILURE"
 
+export const POST_UPDATE_VALUE      = "POST_UPDATE_VALUE"
 export const POST_SAVE_UPDATE       = "POST_SAVE_UPDATE"
 export const POST_SAVE              = "POST_SAVE"
 export const POST_SAVE_ERROR        = "POST_SAVE_ERROR"
@@ -21,7 +22,6 @@ export const fetchUsersList = () => async dispatch => {
     dispatch(startLoadingUsers())
     try {
         const response = await api.get('/users')
-        console.log(response)
         const { data } = response
         dispatch(setUsersList( data ))
     } catch(e) {
@@ -62,9 +62,13 @@ export const setModel = payload => ({
     payload
 })
 
-export const changeModelValue = (fieldName, value) =>({
-    type: POST_NEW_ITEM,
-    [fieldName]: value
+export const changeModelValue = (fieldName, value) => dispatch => {
+    dispatch(setValueInDetail(fieldName, value))
+}
+
+export const setValueInDetail = (fieldName, value) => ({
+	type: POST_UPDATE_VALUE,
+    payload: {[fieldName]: value}
 })
 
 export const fetchPost = id => async dispatch => {
