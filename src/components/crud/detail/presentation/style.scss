@@ -1,0 +1,45 @@
+form {
+    font: normal 12px/16px arial;
+    display: flex;
+    flex-flow: column wrap;
+
+    input, textarea, select {
+        margin: 5px 10px;
+        min-width:2em;
+        padding: 5px;
+        height: 25px;
+    }
+
+    label {
+        margin: 10px;
+        padding: 15px;
+        color: #333;
+
+        &:text {
+            margin-left: 15px
+        }
+
+        input, textarea, select {
+            border: 1px solid coral;
+            background-color: #f5f5f5;
+        }
+    }
+
+    button, a {
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+        padding: 15px;
+        color: #fff;
+        background-color: coral;
+        border: 1px solid coral;
+        cursor: pointer;
+    }
+
+    a {
+        &:hover,
+        &:active {
+            background-color: rgb(204, 127, 99)
+        }
+    }
+}

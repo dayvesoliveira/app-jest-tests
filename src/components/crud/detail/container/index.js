@@ -41,14 +41,12 @@ class DetailContainer extends React.PureComponent {
 
     handleChangeInput = event => {
         this.props.changeModelValue(event.target.id, event.target.value)
-        console.log('handleChangeInput', this.props.detail )
     }
 
     handleChangeSelect = event => {
         event.preventDefault()
         const value = event.target.value ? parseInt(event.target.value,10):null
         this.props.changeModelValue(event.target.id, value)
-        console.log('handleChangeSelect', this.props.detail )
     }
 
     handleSubmit = event => {
@@ -63,7 +61,7 @@ class DetailContainer extends React.PureComponent {
         const { id, title} = detail
         return (
             <>{ loading ? 
-                    <span>aguarde...</span> :
+                    (<h2>aguarde...</h2>) :
                     (<>
                             <span>{ id} - {title}</span>
                             <br />

@@ -2,6 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+import './style.scss'
+
+const isDisable = op =>(op ? 'disable':'')
+
 const DetailFormComponent = ({
     title,
     body,
@@ -10,6 +14,7 @@ const DetailFormComponent = ({
     handleChangeInput,
     handleChangeSelect,
     handleSubmit,
+    loading,
     ...props
 }) => (
     <>
@@ -18,25 +23,28 @@ const DetailFormComponent = ({
                 Title
                 <input id="title" onChange={ handleChangeInput } value={ title } />
             </label>
-            <br/>
+            
             <label>
                 Body
                 <textarea id="body" onChange={ handleChangeInput } value={ body }></textarea> 
             </label>
-            <br/>
-            <select id="userId" onChange={ handleChangeSelect } value={ userId }>
-                <option>Selecione...</option>
-             {
-                Array.isArray(listUsers) && (
-                    listUsers.map((item)=>{
-                        return  (<option key={'user'+ item.id } value={ item.id }>{ item.name }</option>)
-                    })
-                 )
-             }
-            </select>
-            <br/>
-            <button>Enviar</button>
-            <br/>
+            
+            <label>
+                User
+                <select id="userId" onChange={ handleChangeSelect } value={ userId }>
+                    <option>Selecione...</option>
+                {
+                    Array.isArray(listUsers) && (
+                        listUsers.map((item)=>{
+                            return  (<option key={'user'+ item.id } value={ item.id }>{ item.name }</option>)
+                        })
+                    )
+                }
+                </select>
+            </label>
+            
+            <button disable={ isDisable(loading) }>Enviar</button>
+            
             <Link to="/">Voltar</Link>
         </form>
     </>
@@ -46,7 +54,7 @@ DetailFormComponent.defaultProps = {
     id:     null,
     title:  '',
     body:   '',
-    userId: null
+    userId: undefined
 }
 
 DetailFormComponent.propTypes = {
@@ -55,7 +63,8 @@ DetailFormComponent.propTypes = {
     body:   PropTypes.string,
     userId: PropTypes.number,
     handleChange: PropTypes.func,
-    listUsers: PropTypes.array
+    listUsers: PropTypes.array,
+    loading: PropTypes.bool
 }
 
 export default DetailFormComponent
