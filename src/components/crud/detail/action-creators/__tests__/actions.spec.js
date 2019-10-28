@@ -28,7 +28,8 @@ import {
     errorFetchSubmitPost,
     fetchSubmitPost,
     errorFetchPost,
-    usersList
+    usersList,
+    setValueInDetail
 } from '..'
 
 import api from '../../../../../config/api'
@@ -58,10 +59,12 @@ describe('#actions', ()=>{
         it('changeModelValue', ()=>{
             const fieldName = "value1",
                   value     = "teste"
-            expect(changeModelValue(fieldName, value)).toEqual({
-                type: POST_NEW_ITEM,
-                value1: "teste",
-            })
+                  
+            changeModelValue(fieldName, value)(dispatch)
+
+            expect(dispatch).toHaveBeenCalledWith(
+                setValueInDetail(fieldName, value)
+            )
         })
 
         it('errorFetchSubmitPost', ()=>{
@@ -142,7 +145,7 @@ describe('#actions', ()=>{
         it('executando o teste de retorno de setUsersList', ()=>{
             const payload = LIST_USER_MOCK
             expect(setUsersList(payload)).toEqual({
-                type: USER_LIST_GET,
+                type: USER_LIST_FILTER,
                 payload
             })
         })
@@ -167,7 +170,7 @@ describe('#actions', ()=>{
                 expect(dispatch).toHaveBeenCalledWith(startLoadingUsers())
             })
 
-            it('fetchUsersList', async ()=>{
+            it('valida se a funcao setUsersList foi chamada', async ()=>{
                 const mockResponse = {
                     data: []
                 }
@@ -178,7 +181,7 @@ describe('#actions', ()=>{
                 )
             })
 
-            it('errorFetchUsersList', async ()=>{
+            it('valida se a funcao errorFetchUsersList foi chamada', async ()=>{
                 const err = {"message": "[Error: Error!]"}
                 api.get.mockReturnValue(Promise.reject(err))
                 await fetchUsersList()(dispatch)

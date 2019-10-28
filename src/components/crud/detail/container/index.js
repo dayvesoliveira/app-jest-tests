@@ -53,7 +53,8 @@ class DetailContainer extends React.PureComponent {
 
     handleSubmit = event => {
         event.preventDefault()
-		console.log(this.props.detail)
+        console.log(this.props.detail)
+        this.props.fetchSubmitPost()
     }
 
     render(){
