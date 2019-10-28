@@ -87,12 +87,12 @@ export const errorFetchPost = err => ({
     message: err
 })
 
-export const fetchSubmitPost = () => async dispatch => {
+export const fetchSubmitPost = (model = null) => async dispatch => {
     dispatch(startLoadingPost())
     try {
-        const response = await api.post('/posts')
+        const response = await api.post('/posts', model)
         const { data } = response
-        dispatch(setModel(data))
+        if ( data ) dispatch(setModel(data))
     } catch(e) {
         dispatch(errorFetchSubmitPost(e && e.message || 'Error!'))
     }

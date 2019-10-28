@@ -26,14 +26,9 @@ const GridPost = ({
                         <td>{ post.id }</td>
                         <td>{ post.title }</td>
                         <td>{ post.body }</td>
-                        <td>{ post.user }</td>
+                        <td>{ post.userId }</td>
                         <td>
                             <ButtonLink id={ post.id }/>
-                            {/* <Link 
-                                className="btn-edit" 
-                                to={'/posts/'+ post.id }>
-                                Editar
-                            </Link> */}
                             <button 
                                 className="btn-exclude" 
                                 onClick={()=>handleDelete(post.id)}>
