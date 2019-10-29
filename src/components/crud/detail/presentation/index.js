@@ -55,11 +55,12 @@ const DetailFormComponent = ({
             <button disable={ isDisable(loading) }>Enviar</button>
             
             <Link to="/">Voltar</Link>
-
-            <DetailComponent { ...props }>
-                <h1>TESTE TESTE</h1>
-            </DetailComponent>
         </Form>
+        <DetailComponent title={ title }
+            body={ body }
+            userId={ userId }
+            listUsers={ listUsers }>
+        </DetailComponent>
     </>
 )
 
