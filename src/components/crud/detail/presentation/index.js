@@ -1,8 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
+import DetailComponent from '../presentation/detail'
 
 import './style.scss'
+
+const Form = styled.form`
+    font: normal 12px/16px arial;
+    display: flex;
+    flex-flow: column wrap;
+`
 
 const isDisable = op =>(op ? 'disable':'')
 
@@ -18,7 +27,7 @@ const DetailFormComponent = ({
     ...props
 }) => (
     <>
-        <form onSubmit={ handleSubmit } noValidate>
+        <Form onSubmit={ handleSubmit } noValidate>
             <label>
                 Title
                 <input id="title" onChange={ handleChangeInput } value={ title } />
@@ -46,7 +55,11 @@ const DetailFormComponent = ({
             <button disable={ isDisable(loading) }>Enviar</button>
             
             <Link to="/">Voltar</Link>
-        </form>
+
+            <DetailComponent { ...props }>
+                <h1>TESTE TESTE</h1>
+            </DetailComponent>
+        </Form>
     </>
 )
 
