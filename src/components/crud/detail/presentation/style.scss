@@ -5,12 +5,13 @@ form {
 
     input, textarea, select {
         margin: 5px 10px;
-        min-width:2em;
-        padding: 5px;
-    }
-
-    input, select {
-        height: 25px;
+        min-width: 2em;
+        padding: 0.5em;
+        margin: 0.5em;
+        color: #333;
+        background: papayawhip;
+        border: none;
+        border-radius: 3px;
     }
 
     label {
