@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const Label = styled.label`
     font: normal 10px/24px arial, helvetica;
@@ -43,5 +44,19 @@ const DetailComponent = ({
         <Label><Span>User</Span>  { userByid(listUsers, userId) }</Label>
     </>
 )
+
+DetailComponent.defaultProps = {
+    title: '',
+    body: '',
+    userId: '',
+    listUsers: ''
+}
+
+DetailComponent.propTypes = {
+    title: PropTypes.string,
+    body: PropTypes.string,
+    userId: PropTypes.number,
+    listUsers: PropTypes.array
+}
 
 export default DetailComponent

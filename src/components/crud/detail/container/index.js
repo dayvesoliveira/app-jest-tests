@@ -20,6 +20,14 @@ import DetailFormComponent from '../presentation'
 
 class DetailContainer extends React.PureComponent {
 
+    static defaultProps = {
+        fetchUsersList: ()=>{},
+        detail: {},
+        users: [],
+        loading: false,
+		error: {}
+    }
+
     static propTypes = {
         fetchUsersList: PropTypes.func,
         detail: PropTypes.shape({
@@ -45,7 +53,7 @@ class DetailContainer extends React.PureComponent {
 
     handleChangeSelect = event => {
         event.preventDefault()
-        const value = event.target.value ? parseInt(event.target.value,10):null
+        const value = event.target.value ? event.target.value:''
         this.props.changeModelValue(event.target.id, value)
     }
 
@@ -63,7 +71,7 @@ class DetailContainer extends React.PureComponent {
             <>{ loading ? 
                     (<h2>aguarde...</h2>) :
                     (<>
-                            <span>{ id} - {title}</span>
+                            <h3>Post Detail</h3>
                             <br />
                             <DetailFormComponent
                                 handleChangeInput={ this.handleChangeInput }

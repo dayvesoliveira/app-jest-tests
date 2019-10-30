@@ -35,7 +35,7 @@ const DetailFormComponent = ({
             
             <label>
                 Body
-                <textarea id="body" onChange={ handleChangeInput } value={ body }></textarea> 
+                <textarea id="body" rows="5" cols="100" onChange={ handleChangeInput } value={ body }></textarea> 
             </label>
             
             <label>
@@ -65,14 +65,12 @@ const DetailFormComponent = ({
 )
 
 DetailFormComponent.defaultProps = {
-    id:     null,
     title:  '',
     body:   '',
-    userId: undefined
+    userId: ''
 }
 
 DetailFormComponent.propTypes = {
-    id:     PropTypes.number,
     title:  PropTypes.string,
     body:   PropTypes.string,
     userId: PropTypes.number,
