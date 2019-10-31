@@ -14,6 +14,7 @@
       "<rootDir>/src/config/"
     ],
     "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
       "<rootDir>/src/config/tests/*.js",
       "<rootDir>/src/config/*.js"
     ],
