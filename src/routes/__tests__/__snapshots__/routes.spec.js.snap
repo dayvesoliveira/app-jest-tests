@@ -18,7 +18,7 @@ exports[`routes using memory router should show Home component for / router (usi
         "entries": Array [
           Object {
             "hash": "",
-            "key": "sdiip7",
+            "key": "fk5w9t",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -32,7 +32,7 @@ exports[`routes using memory router should show Home component for / router (usi
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "sdiip7",
+          "key": "fk5w9t",
           "pathname": "/",
           "search": "",
           "state": undefined,

@@ -36,7 +36,7 @@ const DetailFormComponent = ({
             
             <label>
                 Body
-                <textarea id="body" rows="5" cols="100" onChange={ handleChangeInput } value={ body } 
+                <textarea id="body" rows="5" onChange={ handleChangeInput } value={ body } 
                     readOnly={ isReadonly(loading) }>
                 </textarea> 
             </label>
@@ -56,9 +56,9 @@ const DetailFormComponent = ({
                 }
                 </select>
             </label>
-            
+
             <button disabled={ isDisable(loading) }>
-                {loading ? 'aguarde...' : 'Enviar'}
+                { loading ? 'aguarde...' : 'Enviar' }
             </button>
             
             <Link to="/">Voltar</Link>

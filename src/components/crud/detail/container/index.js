@@ -54,7 +54,7 @@ class DetailContainer extends React.PureComponent {
     handleChangeSelect = event => {
         event.preventDefault()
         const value = event.target.value ? event.target.value:''
-        this.props.changeModelValue(event.target.id, value)
+        this.props.changeModelValue(event.target.id, parseInt(value, 10) )
     }
 
     handleSubmit = event => {
