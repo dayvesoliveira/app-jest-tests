@@ -29,6 +29,26 @@ form {
         }
     }
 
+    input, textarea {
+        &:not(:disabled),
+        &:not(:read-only){
+            background-color: #f5f5f5;
+        }
+        &:read-only,
+        &:disabled {
+            opacity: .8;
+        }
+    }
+
+    select {
+        &:not(:disabled){
+            background-color: #f5f5f5;
+        }
+        &:disabled {
+            opacity: .8;
+        }
+    }
+
     button, a {
         display: flex;
         justify-content: center;
@@ -38,6 +58,9 @@ form {
         background-color: coral;
         border: 1px solid coral;
         cursor: pointer;
+        &:disabled {
+            opacity: .8;
+        }
     }
 
     a {

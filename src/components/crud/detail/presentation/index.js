@@ -14,6 +14,7 @@ const Form = styled.form`
 `
 
 const isDisable = op =>(op ? 'disable':'')
+const isReadonly = op =>(op ? 'readonly':'')
 
 const DetailFormComponent = ({
     title,
@@ -30,17 +31,21 @@ const DetailFormComponent = ({
         <Form onSubmit={ handleSubmit } noValidate>
             <label>
                 Title
-                <input id="title" onChange={ handleChangeInput } value={ title } />
+                <input id="title" onChange={ handleChangeInput } value={ title } readOnly={ isReadonly(loading) }/>
             </label>
             
             <label>
                 Body
-                <textarea id="body" rows="5" cols="100" onChange={ handleChangeInput } value={ body }></textarea> 
+                <textarea id="body" rows="5" cols="100" onChange={ handleChangeInput } value={ body } 
+                    readOnly={ isReadonly(loading) }>
+                </textarea> 
             </label>
             
             <label>
                 User
-                <select id="userId" onChange={ handleChangeSelect } value={ userId }>
+                <select id="userId" 
+                    onChange={ handleChangeSelect } value={ userId || '' } 
+                    disabled={ isDisable(loading) }>
                     <option>Selecione...</option>
                 {
                     Array.isArray(listUsers) && (
@@ -52,7 +57,9 @@ const DetailFormComponent = ({
                 </select>
             </label>
             
-            <button disable={ isDisable(loading) }>Enviar</button>
+            <button disabled={ isDisable(loading) }>
+                {loading ? 'aguarde...' : 'Enviar'}
+            </button>
             
             <Link to="/">Voltar</Link>
         </Form>

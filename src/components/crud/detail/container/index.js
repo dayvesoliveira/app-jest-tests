@@ -68,21 +68,34 @@ class DetailContainer extends React.PureComponent {
         const { detail, loading, users } = this.props
         const { id, title} = detail
         return (
-            <>{ loading ? 
-                    (<h2>aguarde...</h2>) :
-                    (<>
-                            <h3>Post Detail</h3>
-                            <br />
-                            <DetailFormComponent
-                                handleChangeInput={ this.handleChangeInput }
-                                handleChangeSelect={ this.handleChangeSelect }
-                                handleSubmit={ this.handleSubmit }
-                                listUsers={ users }
-                                { ...detail }
-                                { ...this.props }
-                                />
-                    </>)
-            }</>)
+            // <>{ loading ? 
+            //         (<h2>aguarde...</h2>) :
+            //         (<>
+            //                 <h3>Post Detail</h3>
+            //                 <br />
+            //                 <DetailFormComponent
+            //                     handleChangeInput={ this.handleChangeInput }
+            //                     handleChangeSelect={ this.handleChangeSelect }
+            //                     handleSubmit={ this.handleSubmit }
+            //                     listUsers={ users }
+            //                     { ...detail }
+            //                     { ...this.props }
+            //                     />
+            //         </>)
+            // }</>
+            <>
+                <h3>Post Detail</h3>
+                <br />
+                <DetailFormComponent
+                    handleChangeInput={ this.handleChangeInput }
+                    handleChangeSelect={ this.handleChangeSelect }
+                    handleSubmit={ this.handleSubmit }
+                    listUsers={ users }
+                    { ...detail }
+                    { ...this.props }
+                    />
+                </>
+            )
     }
 }
 
