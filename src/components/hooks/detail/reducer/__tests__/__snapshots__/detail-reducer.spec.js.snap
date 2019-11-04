@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`detail reducer #detail should return the \`POST_NEW_ITEM\` set input value 1`] = `Object {}`;
+
+exports[`detail reducer #detail should return the \`POST_SAVE\` state 1`] = `Object {}`;
+
+exports[`detail reducer #detail should return the initial state by default 1`] = `Object {}`;
+
+exports[`detail reducer #error should return the \`"POST_GET_ID_FAILURE"\` set [object Object] input value 1`] = `
+Object {
+  "message": "POST_GET_ID_FAILURE--Messages",
+}
+`;
+
+exports[`detail reducer #error should return the \`"POST_SAVE_ERROR"\` set [object Object] input value 1`] = `
+Object {
+  "message": "POST_SAVE_ERROR--Messages",
+}
+`;
+
+exports[`detail reducer #error should return the \`"POST_SAVE_ERROR"\` set [object Object] input value 2`] = `
+Object {
+  "message": "POST_SAVE_ERROR--Messages",
+}
+`;
+
+exports[`detail reducer #error should return the \`"USER_GET_ERROR"\` set [object Object] input value 1`] = `
+Object {
+  "message": "USER_GET_ERROR--Messages",
+}
+`;
+
+exports[`detail reducer #error should return the \`"USER_GET_ERROR"\` set [object Object] input value 2`] = `
+Object {
+  "message": "USER_GET_ERROR--Messages",
+}
+`;
+
+exports[`detail reducer #error should return the \`"USER_LIST_GET_FAILURE"\` set [object Object] input value 1`] = `
+Object {
+  "message": "USER_LIST_GET_FAILURE--Messages",
+}
+`;
+
+exports[`detail reducer #error should return the initial state by default 1`] = `Object {}`;
+
+exports[`detail reducer #loading should return the initial state by default 1`] = `
+Object {
+  "body": "",
+  "id": null,
+  "title": "",
+  "userId": null,
+}
+`;

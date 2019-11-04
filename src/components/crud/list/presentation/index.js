@@ -23,7 +23,7 @@ const GridPost = ({
                 { searchPosts && searchPosts.map(post=>{
                     return (
                     <tr key={ 'pst_' + post.id }>
-                        <td>{ post.id }</td>
+                        <td><a href={'/hooks/'+ post.id }>{ post.id }</a></td>
                         <td>{ post.title }</td>
                         <td>{ post.body }</td>
                         <td>{ post.userId }</td>
